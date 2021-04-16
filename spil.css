@@ -1,0 +1,318 @@
+/** @format */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* Generelt */
+#screen {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: 100vw;
+	height: 56.25vw;
+	overflow: hidden;
+	scroll-behavior: none;
+}
+
+#game {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+#start {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#game_over {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#level_complete {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#game_background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-image: url("assets/screens/spil_baggrund.svg");
+	background-size: contain;
+}
+
+#game_elements {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+#game_ui {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+/* Spil Elementer */
+
+#kvinde_container_1 {
+	position: absolute;
+	left: 14vw;
+	top: 20vw;
+	z-index: 1;
+}
+#kvinde_sprite_1 {
+	/* ratio 24:97 */
+	background-image: url("assets/figure/ensemble_kvinde.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+}
+
+#kvinde_container_2 {
+	position: absolute;
+	left: 24vw;
+	top: 25vw;
+	z-index: 1;
+}
+#kvinde_sprite_2 {
+	/* ratio 24:97 */
+	background-image: url("assets/figure/ensemble_kvinde.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+}
+
+#kvinde_container_3 {
+	position: absolute;
+	left: 40vw;
+	top: 16vw;
+	z-index: 1;
+}
+#kvinde_sprite_3 {
+	/* ratio 24:97 */
+	background-image: url("assets/figure/ensemble_kvinde.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+}
+
+#kvinde_container_4 {
+	position: absolute;
+	left: 77vw;
+	top: 22vw;
+	z-index: 1;
+}
+#kvinde_sprite_4 {
+	/* ratio 24:97 */
+	background-image: url("assets/figure/ensemble_kvinde.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+}
+
+#mand_container_1 {
+	position: absolute;
+	top: 30vw;
+	left: 5vw;
+	z-index: 10;
+}
+#mand_sprite_1 {
+	/* ratio 4:5 */
+	background-image: url("assets/figure/ensemble_mand.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
+#mand_container_2 {
+	position: absolute;
+	top: 35vw;
+	left: 50vw;
+	z-index: 10;
+}
+#mand_sprite_2 {
+	/* ratio 4:5 */
+	background-image: url("assets/figure/ensemble_mand.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
+#mand_container_3 {
+	position: absolute;
+	top: 20vw;
+	left: 57vw;
+	z-index: 10;
+}
+#mand_sprite_3 {
+	/* ratio 4:5 */
+	background-image: url("assets/figure/ensemble_mand.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
+#skaldet_container_1 {
+	position: absolute;
+	top: 30vw;
+	left: 33vw;
+	z-index: 10;
+}
+#skaldet_sprite_1 {
+	/* ratio 7:8 */
+	background-image: url("assets/figure/ensemble_skaldet.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
+#skaldet_container_2 {
+	position: absolute;
+	top: 28vw;
+	left: 70vw;
+	z-index: 10;
+}
+#skaldet_sprite_2 {
+	/* ratio 7:8 */
+	background-image: url("assets/figure/ensemble_skaldet.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
+#skaldet_container_3 {
+	position: absolute;
+	top: 30vw;
+	left: 85vw;
+	z-index: 10;
+}
+#skaldet_sprite_3 {
+	/* ratio 7:8 */
+	background-image: url("assets/figure/ensemble_skaldet.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
+/* Trykke Elementer */
+#beer_container {
+	position: absolute;
+	top: 35vw;
+	left: 74vw;
+	z-index: 5;
+}
+#beer_sprite {
+	/* ratio 9:7 */
+	background-image: url("assets/ui_elementer/arm_fadøl.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+
+#sidevogn_container {
+	position: absolute;
+	top: 28vw;
+	left: 61vw;
+	z-index: 5;
+}
+#sidevogn_sprite {
+	/* ratio 9:7 */
+	background-image: url("assets/ui_elementer/arm_fadøl_sidevogn.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+
+#telefon_container {
+	position: absolute;
+	top: 37vw;
+	left: 37vw;
+	z-index: 5;
+}
+#telefon_sprite {
+	/* ratio 9:7 */
+	background-image: url("assets/ui_elementer/arm_telefon.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+
+#vand_container {
+	position: absolute;
+	top: 39vw;
+	left: 9vw;
+	z-index: 5;
+}
+#vand_sprite {
+	/* ratio 9:7 */
+	background-image: url("assets/ui_elementer/arm_vand.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+/* UI Elementer */
+
+#energy_board {
+	/* ratio 53:173 */
+	background-image: url("assets/ui_elementer/barometer.svg");
+	width: 6vw;
+	height: 19.56vw;
+	background-size: cover;
+
+	position: absolute;
+	top: 20vw;
+	left: 93vw;
+}
+#mood_board {
+	/* ratio 93:176 */
+	background-image: url("assets/figure/hoved_1.svg");
+	width: 11vw;
+	height: 20.81vw;
+	background-size: cover;
+
+	position: absolute;
+	top: 1vw;
+	left: 5vw;
+}
+#time_board {
+	/* ratio 53:173 */
+	background-image: url("assets/ui_elementer/ur.svg");
+	width: 10vw;
+	height: 10vw;
+	background-size: cover;
+
+	position: absolute;
+	top: 1vw;
+	left: 88vw;
+}

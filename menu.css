@@ -1,0 +1,195 @@
+/**
+ * /*------------------------------------------------------- Menu -------------------------------------------------------
+ *
+ * @format
+ */
+/* 
+nav {
+	position: fixed;
+	height: auto;
+	width: auto;
+	right: 7rem;
+	top: 2rem;
+}
+nav .main {
+	position: absolute;
+	content: "";
+	width: 6rem;
+	height: 6rem;
+	background: url("assets/knapper/hjem_lys.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+	z-index: 100;
+	box-shadow: 0rem 0.6rem 1rem #f7921e52;
+}
+
+.circle {
+	position: absolute;
+	content: "";
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.3s;
+	z-index: -10;
+	cursor: url("assets/ui_elementer/cursor_copy.png"), auto;
+	pointer-events: none;
+}
+
+.circle:first-child {
+	background: url("assets/knapper/play_knap.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.open_1 {
+	transform: translate(-15rem, -2.5rem);
+	pointer-events: all;
+	z-index: -10;
+}
+
+.circle:nth-child(2) {
+	background: url("assets/knapper/ui_knap.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition-delay: 0.05s;
+}
+
+.open_2 {
+	transform: translate(-13rem, 4rem);
+	pointer-events: all;
+	z-index: -10;
+}
+
+.circle:nth-child(3) {
+	background: url("assets/knapper/doc_knap.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition-delay: 0.1s;
+}
+
+.open_3 {
+	transform: translate(-8.5rem, 9rem);
+	pointer-events: all;
+	z-index: -10;
+}
+
+.circle:last-child {
+	background: url("assets/knapper/hjem_lys.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition-delay: 0.2s;
+}
+
+.open_4 {
+	transform: translate(-2rem, 11rem);
+	pointer-events: all;
+	z-index: -10;
+} */
+
+nav {
+	position: fixed;
+	height: auto;
+	width: auto;
+	right: 7rem;
+	top: 2rem;
+}
+nav .main {
+	position: absolute;
+	content: "";
+	width: 6rem;
+	height: 6rem;
+	background: url("assets/knapper/hjem_lys.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+	z-index: 100;
+	box-shadow: 0rem 0.6rem 1rem #f7921e52;
+}
+
+nav .active_area {
+	position: absolute;
+	content: "";
+	width: 6rem;
+	height: 6rem;
+	border-radius: 50%;
+	background: red;
+	z-index: 1000;
+}
+
+nav .active_area:hover {
+	width: 25rem;
+	height: 25rem;
+	border-radius: 50%;
+	transform: translate(-50%, -25%);
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.circle {
+	position: absolute;
+	content: "";
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.3s;
+	z-index: -10;
+	cursor: url("assets/ui_elementer/cursor_copy.png"), auto;
+	pointer-events: none;
+}
+
+.circle:first-child {
+	background: url("assets/knapper/play_knap.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+nav .active_area:hover > .circle:first-child {
+	transform: translate(-15rem, -2.5rem);
+	pointer-events: all;
+	z-index: -10;
+}
+
+.circle:nth-child(2) {
+	background: url("assets/knapper/ui_knap.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition-delay: 0.05s;
+}
+
+.open_2 {
+	transform: translate(-13rem, 4rem);
+	pointer-events: all;
+	z-index: -10;
+}
+
+.circle:nth-child(3) {
+	background: url("assets/knapper/doc_knap.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition-delay: 0.1s;
+}
+
+.open_3 {
+	transform: translate(-8.5rem, 9rem);
+	pointer-events: all;
+	z-index: -10;
+}
+
+.circle:last-child {
+	background: url("assets/knapper/hjem_lys.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition-delay: 0.2s;
+}
+
+.open_4 {
+	transform: translate(-2rem, 11rem);
+	pointer-events: all;
+	z-index: -10;
+}
