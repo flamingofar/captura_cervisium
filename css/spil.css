@@ -5,7 +5,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-/* Generelt */
+/*------------------------------------------------ Generelt ------------------------------------------------*/
 #screen {
 	margin: 0;
 	padding: 0;
@@ -77,7 +77,7 @@
 	left: 0;
 }
 
-/* Spil Elementer */
+/*------------------------------------------------ Spil Elementer ------------------------------------------------*/
 
 #kvinde_container_1 {
 	position: absolute;
@@ -225,7 +225,7 @@
 	z-index: 5;
 }
 
-/* Trykke Elementer */
+/*------------------------------------------------ Trykke Elementer ------------------------------------------------*/
 #beer_container {
 	position: absolute;
 	top: 35vw;
