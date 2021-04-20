@@ -241,8 +241,8 @@
 }
 
 #sidevogn_container {
+	display: none;
 	position: absolute;
-
 	z-index: 5;
 }
 #sidevogn_sprite {
@@ -254,9 +254,8 @@
 }
 
 #telefon_container {
+	display: none;
 	position: absolute;
-	top: 37vw;
-	left: 37vw;
 	z-index: 5;
 }
 #telefon_sprite {
