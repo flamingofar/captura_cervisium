@@ -1,11 +1,36 @@
 /** @format */
 
 .rotate_arm {
+	animation-name: rotate_arm_kf;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 }
-@keyframe rotate_arm_kf {
+@keyframes rotate_arm_kf {
+	0% {
+		transform: rotate(45deg);
+		opacity: 0;
+	}
+	25% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 1;
+		transform: rotate(-30deg);
+	}
+	90% {
+		opacity: 1;
+	}
+	94% {
+		opacity: 0;
+	}
+	100% {
+		transform: rotate(45deg);
+		opacity: 0;
+	}
 }
 
 .fade_out {
 }
-@keyframe fade_out_kf {
+@keyframes fade_out_kf {
 }

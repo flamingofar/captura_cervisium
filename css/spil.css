@@ -22,6 +22,7 @@
 	height: 100%;
 	top: 0;
 	left: 0;
+	overflow: hidden;
 }
 
 #start {
@@ -58,7 +59,7 @@
 	top: 0;
 	left: 0;
 	background-image: url("../assets/screens/spil_baggrund.svg");
-	background-size: contain;
+	background-size: cover;
 }
 
 #game_elements {
@@ -228,9 +229,8 @@
 /*------------------------------------------------ Trykke Elementer ------------------------------------------------*/
 #beer_container {
 	position: absolute;
-	top: 35vw;
-	left: 74vw;
 	z-index: 5;
+	transform-origin: 0 0;
 }
 #beer_sprite {
 	/* ratio 9:7 */
@@ -242,8 +242,7 @@
 
 #sidevogn_container {
 	position: absolute;
-	top: 28vw;
-	left: 61vw;
+
 	z-index: 5;
 }
 #sidevogn_sprite {
@@ -270,9 +269,8 @@
 
 #vand_container {
 	position: absolute;
-	top: 39vw;
-	left: 9vw;
 	z-index: 5;
+	transform-origin: 0 0;
 }
 #vand_sprite {
 	/* ratio 9:7 */
@@ -281,6 +279,49 @@
 	height: 6vw;
 	background-size: cover;
 }
+
+/*------------------------------------------------ Trykke Elementer Positioner ------------------------------------------------*/
+.pos1 {
+	top: 39vw;
+	left: 9vw;
+}
+.pos2 {
+	top: 28vw;
+	left: 17.5vw;
+}
+.pos3 {
+	top: 33vw;
+	left: 27.5vw;
+}
+.pos4 {
+	top: 37vw;
+	left: 37vw;
+}
+.pos5 {
+	top: 24vw;
+	left: 43.5vw;
+}
+.pos6 {
+	top: 43vw;
+	left: 54vw;
+}
+.pos7 {
+	top: 28vw;
+	left: 61vw;
+}
+.pos8 {
+	top: 35vw;
+	left: 74vw;
+}
+.pos9 {
+	top: 29.5vw;
+	left: 80.5vw;
+}
+.pos10 {
+	top: 37vw;
+	left: 89vw;
+}
+
 /* UI Elementer */
 
 #energy_board {
