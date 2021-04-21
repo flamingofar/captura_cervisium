@@ -325,7 +325,7 @@
 
 #energy_board {
 	/* ratio 53:173 */
-	background-image: url("../assets/ui_elementer/barometer.svg");
+	background-image: url("../assets/ui_elementer/barometer/barometer_1.svg");
 	width: 6vw;
 	height: 19.56vw;
 	background-size: cover;
