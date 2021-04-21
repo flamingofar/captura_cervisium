@@ -14,7 +14,7 @@
 body {
 	position: relative;
 	background-color: #eed8bc;
-	cursor: url("assets/ui_elementer/cursor_copy.png"), auto;
+	cursor: url("../assets/ui_elementer/cursor_copy.png"), auto;
 }
 
 .logo {

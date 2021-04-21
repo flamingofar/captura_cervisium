@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="https://use.typekit.net/byb5rko.css" />
 
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/menu.css" />
 		<title>Assets</title>
 	</head>
 	<body>
@@ -179,21 +180,5 @@
 			</div>
 		</nav>
 		<main></main>
-
-		<script>
-			const main_circle = document.querySelector(".main");
-			const circle_one = document.querySelector(".circle:first-child");
-			const circle_two = document.querySelector(".circle:nth-child(2)");
-			const circle_three = document.querySelector(".circle:nth-child(3)");
-			const circle_four = document.querySelector(".circle:last-child");
-
-			main_circle.addEventListener("click", () => {
-				console.log("clicked");
-				circle_one.classList.toggle("open_1");
-				circle_two.classList.toggle("open_2");
-				circle_three.classList.toggle("open_3");
-				circle_four.classList.toggle("open_4");
-			});
-		</script>
 	</body>
 </html>
