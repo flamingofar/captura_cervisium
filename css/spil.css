@@ -5,6 +5,11 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+@font-face {
+	font-family: "Nexa-Bold";
+	src: url("fonts/nexa_bold-webfont.woff2") format(woff2);
+}
 /*------------------------------------------------ Generelt ------------------------------------------------*/
 #screen {
 	margin: 0;
@@ -323,6 +328,17 @@
 
 /* UI Elementer */
 
+#energy_board_count {
+	/* ratio 53:173 */
+	width: 100%;
+	height: 100%;
+	position: absolute;
+
+	font-family: Nexa-Bold, sans-serif;
+	font-size: 3rem;
+	text-align: center;
+	padding-top: 3.5rem;
+}
 #energy_board {
 	/* ratio 53:173 */
 	background-image: url("../assets/ui_elementer/barometer/barometer_1.svg");
@@ -331,8 +347,8 @@
 	background-size: cover;
 
 	position: absolute;
-	top: 20vw;
-	left: 93vw;
+	top: 14vw;
+	left: 90.3vw;
 }
 #mood_board {
 	/* ratio 93:176 */
@@ -343,7 +359,7 @@
 
 	position: absolute;
 	top: 1vw;
-	left: 5vw;
+	left: 2vw;
 }
 #time_board {
 	/* ratio 53:173 */

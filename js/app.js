@@ -1,9 +1,18 @@
 /** @format */
 
+let promille;
+
 window.addEventListener("load", loaded);
 
 function loaded() {
 	console.log("loaded");
+	startGame();
+}
+function startGame() {
+	promille = 0;
+	document.querySelector("#energy_board_count").innerHTML =
+		promille + "&permil;";
+	console.log(promille);
 	document.querySelector("#vand_container").classList.add("rotate_arm", "pos6");
 	document.querySelector("#beer_container").classList.add("rotate_arm", "pos4");
 
@@ -38,6 +47,16 @@ function clickHandlerVand() {
 	document.querySelector("#vand_container").classList.add("pause");
 	document.querySelector("#vand_sprite").classList.add("blow_out");
 	document.querySelector("#vand_container").classList.remove("rotate_arm");
+
+	// +1 Promille, udskriv point
+	promille--;
+	console.log(promille);
+	document.querySelector("#energy_board_count").innerHTML =
+		promille + "&permil;";
+
+	// Skift barometerbillede
+	document.querySelector("#energy_board").style.backgroundImage =
+		"url('../assets/ui_elementer/barometer/barometer_2.svg')";
 }
 function resetVand() {
 	document.querySelector("#vand_container").classList.remove("rotate_arm");
@@ -69,6 +88,16 @@ function clickHandlerBeer() {
 	document.querySelector("#beer_sprite").classList.add("fade_out");
 	document.querySelector("#beer_container").classList.add("pause");
 	document.querySelector("#beer_container").classList.remove("rotate_arm");
+
+	// +1 Promille, udskriv point
+	promille++;
+	console.log(promille);
+	document.querySelector("#energy_board_count").innerHTML =
+		promille + "&permil;";
+
+	// Skift barometerbillede
+	document.querySelector("#energy_board").style.backgroundImage =
+		"url('../assets/ui_elementer/barometer/barometer_10.svg')";
 }
 function resetBeer() {
 	document.querySelector("#beer_container").classList.remove("rotate_arm");
