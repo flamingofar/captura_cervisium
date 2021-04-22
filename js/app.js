@@ -26,7 +26,7 @@ function startGame() {
 
 	document
 		.querySelector("#vand_container")
-		.addEventListener("animationiteration", resetAnimationDoneVand);
+		.addEventListener("animationiteration", resetVand);
 
 	// Fadøl Animationer
 	document
@@ -37,7 +37,7 @@ function startGame() {
 		.addEventListener("animationend", resetBeer);
 	document
 		.querySelector("#beer_container")
-		.addEventListener("animationiteration", resetAnimationDoneBeer);
+		.addEventListener("animationiteration", resetBeer);
 }
 // Vand Funktioner
 function clickHandlerVand() {
@@ -56,9 +56,13 @@ function clickHandlerVand() {
 
 	// Skift barometerbillede
 	document.querySelector("#energy_board").style.backgroundImage =
-		"url('../assets/ui_elementer/barometer/barometer_2.svg')";
+		"url('assets/ui_elementer/barometer/barometer_2.svg')";
 }
 function resetVand() {
+	let randomTal = Math.floor(Math.random() * 10) + 1;
+	let randomPos = "pos" + randomTal;
+	console.log("vand" + randomPos);
+
 	document.querySelector("#vand_container").classList.remove("rotate_arm");
 	document.querySelector("#vand_sprite").classList.remove("blow_out");
 	document.querySelector("#vand_container").classList.remove("pause");
@@ -84,37 +88,33 @@ function resetAnimationDoneVand() {
 function clickHandlerBeer() {
 	document
 		.querySelector("#beer_container")
-		.addEventListener("mousedown", clickHandlerBeer);
+		.removeEventListener("mousedown", clickHandlerBeer);
 	document.querySelector("#beer_sprite").classList.add("fade_out");
 	document.querySelector("#beer_container").classList.add("pause");
 	document.querySelector("#beer_container").classList.remove("rotate_arm");
 
 	// +1 Promille, udskriv point
 	promille++;
-	console.log(promille);
+
 	document.querySelector("#energy_board_count").innerHTML =
 		promille + "&permil;";
 
 	// Skift barometerbillede
 	document.querySelector("#energy_board").style.backgroundImage =
-		"url('../assets/ui_elementer/barometer/barometer_10.svg')";
+		"url('assets/ui_elementer/barometer/barometer_10.svg')";
 }
 function resetBeer() {
-	document.querySelector("#beer_container").classList.remove("rotate_arm");
-	document.querySelector("#beer_sprite").classList.remove("fade_out");
-	document.querySelector("#beer_container").classList.remove("pause");
-	document.querySelector("#beer_container").classList.remove("pos4");
-	document.querySelector("#beer_container").classList.add("rotate_arm", "pos8");
+	let randomTal = Math.floor(Math.random() * 10) + 1;
+	let randomPos = "pos" + randomTal;
+	console.log(randomPos);
 
+	document.querySelector("#beer_container").className = "";
+	document.querySelector("#beer_sprite").className = "";
+	// document.querySelector("#beer_container").classList.remove("pause");
+	// document.querySelector("#beer_container").classList.remove("pos4");
 	document
 		.querySelector("#beer_container")
-		.addEventListener("mousedown", clickHandlerBeer);
-}
-function resetAnimationDoneBeer() {
-	document.querySelector("#beer_sprite").classList.remove("fade_out");
-	document.querySelector("#beer_container").classList.remove("pause");
-	document.querySelector("#beer_container").classList.remove("pos4");
-	document.querySelector("#beer_container").classList.add("pos10");
+		.classList.add("rotate_arm", randomPos);
 
 	document
 		.querySelector("#beer_container")
