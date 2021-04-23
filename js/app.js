@@ -18,7 +18,7 @@ function startGame() {
 	sidevognAnimationer();
 	telefonAnimationer();
 }
-// Vand Funktioner
+/*--------------------------------------------------- Vand Funktioner ---------------------------------------------------*/
 function vandAnimationer() {
 	let randomPos = randomTal();
 	let randomDel = randomDelay();
@@ -79,7 +79,7 @@ function resetVand() {
 		.addEventListener("mousedown", clickHandlerVand);
 }
 
-// Fadøl Funktioner
+/*--------------------------------------------------- Fadøl Funktioner ---------------------------------------------------*/
 function beerAnimationer() {
 	let randomPos = randomTal();
 	let randomDel = randomDelay();
@@ -142,7 +142,7 @@ function resetBeer() {
 	console.log(randomPos);
 }
 
-// Sidevogn Funktioner
+/*--------------------------------------------------- Sidevogn Funktioner ---------------------------------------------------*/
 function sidevognAnimationer() {
 	let randomPos = randomTal();
 	let randomDel = randomDelay();
@@ -205,7 +205,7 @@ function resetSidevogn() {
 	console.log(randomPos);
 }
 
-// Telefon Funktioner
+/*--------------------------------------------------- Telefon Funktioner ---------------------------------------------------*/
 function telefonAnimationer() {
 	let randomPos = randomTal();
 	let randomDel = randomDelay();
