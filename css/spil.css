@@ -356,6 +356,37 @@
 	left: 89vw;
 }
 
+/* UI Element - Barometer */
+.barometer1 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_1.svg");
+}
+.barometer2 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_2.svg");
+}
+.barometer3 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_3.svg");
+}
+.barometer4 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_4.svg");
+}
+.barometer5 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_5.svg");
+}
+.barometer6 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_6.svg");
+}
+.barometer7 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_7.svg");
+}
+.barometer8 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_8.svg");
+}
+.barometer9 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_9.svg");
+}
+.barometer10 {
+	background-image: url("../assets/ui_elementer/barometer/barometer_10.svg");
+}
 /* UI Elementer */
 
 #energy_board_count {

@@ -53,7 +53,7 @@ function clickHandlerVand() {
 
 	// Skift barometerbillede
 	document.querySelector("#energy_board").style.backgroundImage =
-		"url('assets/ui_elementer/barometer/barometer_2.svg')";
+		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
 }
 function resetVand() {
 	document
@@ -74,6 +74,9 @@ function resetVand() {
 	document
 		.querySelector("#vand_container")
 		.addEventListener("animationiteration", resetVand);
+	document
+		.querySelector("#vand_container")
+		.addEventListener("mousedown", clickHandlerVand);
 }
 
 // Fadøl Funktioner
@@ -112,7 +115,7 @@ function clickHandlerBeer() {
 
 	// Skift barometerbillede
 	document.querySelector("#energy_board").style.backgroundImage =
-		"url('assets/ui_elementer/barometer/barometer_10.svg')";
+		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
 }
 function resetBeer() {
 	document
@@ -176,7 +179,7 @@ function clickHandlersidevogn() {
 
 	// Skift barometerbillede
 	document.querySelector("#energy_board").style.backgroundImage =
-		"url('assets/ui_elementer/barometer/barometer_7.svg')";
+		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
 }
 function resetsidevogn() {
 	document
