@@ -235,6 +235,7 @@
 	position: absolute;
 	z-index: 5;
 	transform-origin: 0 0;
+	opacity: 0;
 }
 #beer_sprite {
 	/* ratio 9:7 */
@@ -245,9 +246,10 @@
 }
 
 #sidevogn_container {
-	display: none;
 	position: absolute;
 	z-index: 5;
+	transform-origin: 0 0;
+	opacity: 0;
 }
 #sidevogn_sprite {
 	/* ratio 9:7 */
@@ -261,6 +263,8 @@
 	display: none;
 	position: absolute;
 	z-index: 5;
+	transform-origin: 0 0;
+	opacity: 0;
 }
 #telefon_sprite {
 	/* ratio 9:7 */
@@ -274,6 +278,7 @@
 	position: absolute;
 	z-index: 5;
 	transform-origin: 0 0;
+	opacity: 0;
 }
 #vand_sprite {
 	/* ratio 9:7 */
@@ -284,6 +289,32 @@
 }
 
 /*------------------------------------------------ Trykke Elementer Positioner ------------------------------------------------*/
+.delay1 {
+	animation-delay: 100ms;
+}
+.delay2 {
+	animation-delay: 200ms;
+}
+.delay3 {
+	animation-delay: 300ms;
+}
+.delay4 {
+	animation-delay: 400ms;
+}
+
+.speed1 {
+	animation-duration: 1s;
+}
+.speed2 {
+	animation-duration: 1.5s;
+}
+.speed3 {
+	animation-duration: 2s;
+}
+.speed4 {
+	animation-duration: 2.5s;
+}
+
 .pos1 {
 	top: 39vw;
 	left: 9vw;
