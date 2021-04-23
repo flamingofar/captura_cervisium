@@ -61,13 +61,12 @@ function resetVand() {
 		.querySelector("#vand_container")
 		.removeEventListener("animationiteration", resetVand);
 	let randomPos = randomTal();
-	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 
 	document.querySelector("#vand_container").classList = "";
 	document.querySelector("#vand_sprite").classList = "";
 
-	document.querySelector("#vand_container").classList.add(randomDel, randomSpd);
+	document.querySelector("#vand_container").classList.add(randomSpd);
 	document.querySelector("#vand_container").offsetHeight;
 	document
 		.querySelector("#vand_container")
@@ -123,13 +122,12 @@ function resetBeer() {
 		.querySelector("#beer_container")
 		.removeEventListener("animationiteration", resetBeer);
 	let randomPos = randomTal();
-	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 
 	document.querySelector("#beer_container").classList = "";
 	document.querySelector("#beer_sprite").classList = "";
 
-	document.querySelector("#beer_container").classList.add(randomDel, randomSpd);
+	document.querySelector("#beer_container").classList.add(randomSpd);
 	document.querySelector("#beer_container").offsetHeight;
 	document
 		.querySelector("#beer_container")
@@ -187,15 +185,12 @@ function resetSidevogn() {
 		.querySelector("#sidevogn_container")
 		.removeEventListener("animationiteration", resetSidevogn);
 	let randomPos = randomTal();
-	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 
 	document.querySelector("#sidevogn_container").classList = "";
 	document.querySelector("#sidevogn_sprite").classList = "";
 
-	document
-		.querySelector("#sidevogn_container")
-		.classList.add(randomDel, randomSpd);
+	document.querySelector("#sidevogn_container").classList.add(randomSpd);
 	document.querySelector("#sidevogn_container").offsetHeight;
 	document
 		.querySelector("#sidevogn_container")
@@ -245,15 +240,12 @@ function resetTelefon() {
 		.querySelector("#telefon_container")
 		.removeEventListener("animationiteration", resetTelefon);
 	let randomPos = randomTal();
-	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 
 	document.querySelector("#telefon_container").classList = "";
 	document.querySelector("#telefon_sprite").classList = "";
 
-	document
-		.querySelector("#telefon_container")
-		.classList.add(randomDel, randomSpd);
+	document.querySelector("#telefon_container").classList.add(randomSpd);
 	document.querySelector("#telefon_container").offsetHeight;
 	document
 		.querySelector("#telefon_container")
