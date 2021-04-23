@@ -16,6 +16,7 @@ function startGame() {
 	vandAnimationer();
 	beerAnimationer();
 	sidevognAnimationer();
+	telefonAnimationer();
 }
 // Vand Funktioner
 function vandAnimationer() {
@@ -155,15 +156,15 @@ function sidevognAnimationer() {
 	// Fadøl Animationer
 	document
 		.querySelector("#sidevogn_container")
-		.addEventListener("mousedown", clickHandlersidevogn);
+		.addEventListener("mousedown", clickHandlerSidevogn);
 	document
 		.querySelector("#sidevogn_sprite")
-		.addEventListener("animationend", resetsidevogn);
+		.addEventListener("animationend", resetSidevogn);
 	document
 		.querySelector("#sidevogn_container")
-		.addEventListener("animationiteration", resetsidevogn);
+		.addEventListener("animationiteration", resetSidevogn);
 }
-function clickHandlersidevogn() {
+function clickHandlerSidevogn() {
 	document
 		.querySelector("#sidevogn_container")
 		.removeEventListener("mousedown", clickHandlersidevogn);
@@ -181,10 +182,10 @@ function clickHandlersidevogn() {
 	document.querySelector("#energy_board").style.backgroundImage =
 		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
 }
-function resetsidevogn() {
+function resetSidevogn() {
 	document
 		.querySelector("#sidevogn_container")
-		.removeEventListener("animationiteration", resetsidevogn);
+		.removeEventListener("animationiteration", resetSidevogn);
 	let randomPos = randomTal();
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
@@ -202,10 +203,68 @@ function resetsidevogn() {
 
 	document
 		.querySelector("#sidevogn_container")
-		.addEventListener("mousedown", clickHandlersidevogn);
+		.addEventListener("mousedown", clickHandlerSidevogn);
 	document
 		.querySelector("#sidevogn_container")
-		.addEventListener("animationiteration", resetsidevogn);
+		.addEventListener("animationiteration", resetSidevogn);
+	console.log(randomPos);
+}
+
+// Telefon Funktioner
+function telefonAnimationer() {
+	let randomPos = randomTal();
+	let randomDel = randomDelay();
+	let randomSpd = randomSpeed();
+	// Random Position, delay og rotation animation
+	document
+		.querySelector("#telefon_container")
+		.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	// Fadøl Animationer
+	document
+		.querySelector("#telefon_container")
+		.addEventListener("mousedown", clickHandlerTelefon);
+	document
+		.querySelector("#telefon_sprite")
+		.addEventListener("animationend", resetTelefon);
+	document
+		.querySelector("#telefon_container")
+		.addEventListener("animationiteration", resetTelefon);
+}
+function clickHandlerTelefon() {
+	document
+		.querySelector("#telefon_container")
+		.removeEventListener("mousedown", clickHandlerTelefon);
+	document.querySelector("#telefon_container").classList.add("pause");
+	document.querySelector("#telefon_sprite").classList.add("fade_out");
+	document.querySelector("#telefon_container").classList.remove("rotate_arm");
+
+	// Vis Taxa Gameover skærm
+}
+function resetTelefon() {
+	document
+		.querySelector("#telefon_container")
+		.removeEventListener("animationiteration", resetTelefon);
+	let randomPos = randomTal();
+	let randomDel = randomDelay();
+	let randomSpd = randomSpeed();
+
+	document.querySelector("#telefon_container").classList = "";
+	document.querySelector("#telefon_sprite").classList = "";
+
+	document
+		.querySelector("#telefon_container")
+		.classList.add(randomDel, randomSpd);
+	document.querySelector("#telefon_container").offsetHeight;
+	document
+		.querySelector("#telefon_container")
+		.classList.add(randomPos, "rotate_arm");
+
+	document
+		.querySelector("#telefon_container")
+		.addEventListener("mousedown", clickHandlerTelefon);
+	document
+		.querySelector("#telefon_container")
+		.addEventListener("animationiteration", resetTelefon);
 	console.log(randomPos);
 }
 

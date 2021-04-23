@@ -260,7 +260,6 @@
 }
 
 #telefon_container {
-	display: none;
 	position: absolute;
 	z-index: 5;
 	transform-origin: 0 0;
