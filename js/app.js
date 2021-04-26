@@ -1,6 +1,15 @@
 /** @format */
+const beerContainer = document.querySelector("#beer_container");
+const sidevognContainer = document.querySelector("#sidevogn_container");
+const vandContainer = document.querySelector("#vand_container");
+const telefonContainer = document.querySelector("#telefon_container");
+const energyBoard = document.querySelector("#energy_board");
+const energyCount = document.querySelector("#energy_board_count");
+const viser = document.querySelector("#viser");
+const face = document.querySelector("#mood_board");
 
-let promille;
+let point;
+let promilleTxt;
 
 window.addEventListener("load", loaded);
 
@@ -9,14 +18,15 @@ function loaded() {
 	startGame();
 }
 function startGame() {
-	promille = 0;
-	document.querySelector("#energy_board_count").innerHTML =
-		promille + "&permil;";
-	console.log(promille);
+	point = 0;
+	promilleTxt = 0;
+	energyCount.innerHTML = promilleTxt + "&permil;";
+	face.classList.add("face1");
 	vandAnimationer();
 	beerAnimationer();
 	sidevognAnimationer();
 	telefonAnimationer();
+	startTimer();
 }
 /*--------------------------------------------------- Vand Funktioner ---------------------------------------------------*/
 function vandAnimationer() {
@@ -24,59 +34,60 @@ function vandAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	document
-		.querySelector("#vand_container")
-		.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	document
-		.querySelector("#vand_container")
-		.addEventListener("mousedown", clickHandlerVand);
-	document
-		.querySelector("#vand_sprite")
-		.addEventListener("animationend", resetVand);
+	vandContainer.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	vandContainer.addEventListener("mousedown", clickHandlerVand);
+	vandContainer.firstElementChild.addEventListener("animationend", resetVand);
 
-	document
-		.querySelector("#vand_container")
-		.addEventListener("animationiteration", resetVand);
+	vandContainer.addEventListener("animationiteration", resetVand);
 }
 function clickHandlerVand() {
-	document
-		.querySelector("#vand_container")
-		.removeEventListener("mousedown", clickHandlerVand);
-	document.querySelector("#vand_container").classList.add("pause");
-	document.querySelector("#vand_sprite").classList.add("blow_out");
-	document.querySelector("#vand_container").classList.remove("rotate_arm");
+	vandContainer.removeEventListener("mousedown", clickHandlerVand);
+	vandContainer.classList.add("pause");
+	vandContainer.firstElementChild.classList.add("blow_out");
 
 	// +1 Promille, udskriv point
-	promille--;
-	console.log(promille);
-	document.querySelector("#energy_board_count").innerHTML =
-		promille + "&permil;";
+	promilleTxt -= 0.3;
+	point--;
 
 	// Skift barometerbillede
-	document.querySelector("#energy_board").style.backgroundImage =
-		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
+	if (point <= 0) {
+		document.querySelector("#energy_board").style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + 1 + ".svg')";
+
+		energyCount.innerHTML = 0 + "&permil;";
+	} else {
+		document.querySelector("#energy_board").style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
+		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
+	}
+	faceChoice();
 }
 function resetVand() {
-	document
-		.querySelector("#vand_container")
-		.removeEventListener("animationiteration", resetVand);
+	vandContainer.removeEventListener("animationiteration", resetVand);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	document.querySelector("#vand_container").classList = "";
-	document.querySelector("#vand_sprite").classList = "";
+	vandContainer.classList = "";
+	vandContainer.firstElementChild.classList = "";
 
-	document.querySelector("#vand_container").classList.add(randomSpd);
-	document.querySelector("#vand_container").offsetHeight;
-	document
-		.querySelector("#vand_container")
-		.classList.add(randomPos, "rotate_arm");
-	document
-		.querySelector("#vand_container")
-		.addEventListener("animationiteration", resetVand);
-	document
-		.querySelector("#vand_container")
-		.addEventListener("mousedown", clickHandlerVand);
+	vandContainer.classList.add(randomSpd);
+	vandContainer.offsetHeight;
+	vandContainer.classList.add(randomPos, "rotate_arm");
+	vandContainer.addEventListener("animationiteration", resetVand);
+	vandContainer.addEventListener("mousedown", clickHandlerVand);
+}
+function stopVand() {
+	vandContainer.classList = "";
+	vandContainer.firstElementChild.classList = "";
+
+	vandContainer.removeEventListener("mousedown", clickHandlerVand);
+	vandContainer.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	vandContainer.removeEventListener("animationiteration", resetVand);
+	vandContainer.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Fadøl Funktioner ---------------------------------------------------*/
@@ -85,61 +96,67 @@ function beerAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	document
-		.querySelector("#beer_container")
-		.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	beerContainer.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
 	// Fadøl Animationer
-	document
-		.querySelector("#beer_container")
-		.addEventListener("mousedown", clickHandlerBeer);
-	document
-		.querySelector("#beer_sprite")
-		.addEventListener("animationend", resetBeer);
-	document
-		.querySelector("#beer_container")
-		.addEventListener("animationiteration", resetBeer);
+	beerContainer.addEventListener("mousedown", clickHandlerBeer);
+	beerContainer.firstElementChild.addEventListener("animationend", resetBeer);
+	beerContainer.addEventListener("animationiteration", resetBeer);
 }
 function clickHandlerBeer() {
-	document
-		.querySelector("#beer_container")
-		.removeEventListener("mousedown", clickHandlerBeer);
-	document.querySelector("#beer_container").classList.add("pause");
-	document.querySelector("#beer_sprite").classList.add("fade_out");
-	document.querySelector("#beer_container").classList.remove("rotate_arm");
+	beerContainer.removeEventListener("mousedown", clickHandlerBeer);
+	beerContainer.classList.add("pause");
+	beerContainer.firstElementChild.classList.add("fade_out");
 
-	// +1 Promille, udskriv point
-	promille++;
-
-	document.querySelector("#energy_board_count").innerHTML =
-		promille + "&permil;";
+	// +0.3 promille, ++ point, udskriv point
+	promilleTxt += 0.3;
+	point++;
 
 	// Skift barometerbillede
-	document.querySelector("#energy_board").style.backgroundImage =
-		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
+	if (point <= 0) {
+		energyBoard.style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + 1 + ".svg')";
+		face.classList.add("face");
+
+		energyCount.innerHTML = 0 + "&permil;";
+	} else if (point >= 10) {
+		energyBoard.style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + 10 + ".svg')";
+		energyCount.innerHTML = 3 + "&permil;";
+		stopSpillet();
+	} else {
+		energyBoard.style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
+		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
+	}
+	faceChoice();
 }
 function resetBeer() {
-	document
-		.querySelector("#beer_container")
-		.removeEventListener("animationiteration", resetBeer);
+	beerContainer.removeEventListener("animationiteration", resetBeer);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	document.querySelector("#beer_container").classList = "";
-	document.querySelector("#beer_sprite").classList = "";
+	beerContainer.classList = "";
+	beerContainer.firstElementChild.classList = "";
 
-	document.querySelector("#beer_container").classList.add(randomSpd);
-	document.querySelector("#beer_container").offsetHeight;
-	document
-		.querySelector("#beer_container")
-		.classList.add(randomPos, "rotate_arm");
+	beerContainer.classList.add(randomSpd);
+	beerContainer.offsetHeight;
+	beerContainer.classList.add(randomPos, "rotate_arm");
 
-	document
-		.querySelector("#beer_container")
-		.addEventListener("mousedown", clickHandlerBeer);
-	document
-		.querySelector("#beer_container")
-		.addEventListener("animationiteration", resetBeer);
-	console.log(randomPos);
+	beerContainer.addEventListener("mousedown", clickHandlerBeer);
+	beerContainer.addEventListener("animationiteration", resetBeer);
+}
+function stopBeer() {
+	beerContainer.classList = "";
+	beerContainer.firstElementChild.classList = "";
+
+	beerContainer.removeEventListener("mousedown", clickHandlerVand);
+	beerContainer.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	beerContainer.removeEventListener("animationiteration", resetVand);
+	beerContainer.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Sidevogn Funktioner ---------------------------------------------------*/
@@ -148,61 +165,83 @@ function sidevognAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	document
-		.querySelector("#sidevogn_container")
-		.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	sidevognContainer.classList.add(
+		"rotate_arm",
+		randomPos,
+		randomDel,
+		randomSpd
+	);
 	// Fadøl Animationer
-	document
-		.querySelector("#sidevogn_container")
-		.addEventListener("mousedown", clickHandlerSidevogn);
-	document
-		.querySelector("#sidevogn_sprite")
-		.addEventListener("animationend", resetSidevogn);
-	document
-		.querySelector("#sidevogn_container")
-		.addEventListener("animationiteration", resetSidevogn);
+	sidevognContainer.addEventListener("mousedown", clickHandlerSidevogn);
+	sidevognContainer.firstElementChild.addEventListener(
+		"animationend",
+		resetSidevogn
+	);
+	sidevognContainer.addEventListener("animationiteration", resetSidevogn);
 }
 function clickHandlerSidevogn() {
-	document
-		.querySelector("#sidevogn_container")
-		.removeEventListener("mousedown", clickHandlersidevogn);
-	document.querySelector("#sidevogn_container").classList.add("pause");
-	document.querySelector("#sidevogn_sprite").classList.add("fade_out");
-	document.querySelector("#sidevogn_container").classList.remove("rotate_arm");
-
-	// +1 Promille, udskriv point
-	promille += 2;
-
-	document.querySelector("#energy_board_count").innerHTML =
-		promille + "&permil;";
+	sidevognContainer.removeEventListener("mousedown", clickHandlerSidevogn);
+	sidevognContainer.classList.add("pause");
+	sidevognContainer.firstElementChild.classList.add("fade_out");
+	console.log("clicked");
+	// +0.6 Promille, ++ point, udskriv point
+	promilleTxt += 0.6;
+	point += 2;
 
 	// Skift barometerbillede
-	document.querySelector("#energy_board").style.backgroundImage =
-		"url('assets/ui_elementer/barometer/barometer_" + promille + ".svg')";
+	if (point <= 0) {
+		energyBoard.style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + 1 + ".svg')";
+
+		energyCount.innerHTML = 0 + "&permil;";
+	} else if (point >= 10) {
+		energyBoard.style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + 10 + ".svg')";
+		energyCount.innerHTML = 3 + "&permil;";
+
+		stopSpillet();
+	} else {
+		energyBoard.style.backgroundImage =
+			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
+		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
+	}
+	faceChoice();
 }
 function resetSidevogn() {
-	document
-		.querySelector("#sidevogn_container")
-		.removeEventListener("animationiteration", resetSidevogn);
+	sidevognContainer.firstElementChild.removeEventListener(
+		"animationend",
+		resetSidevogn
+	);
+	sidevognContainer.removeEventListener("animationiteration", resetSidevogn);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	document.querySelector("#sidevogn_container").classList = "";
-	document.querySelector("#sidevogn_sprite").classList = "";
+	sidevognContainer.classList = "";
+	sidevognContainer.firstElementChild.classList = "";
 
-	document.querySelector("#sidevogn_container").classList.add(randomSpd);
-	document.querySelector("#sidevogn_container").offsetHeight;
-	document
-		.querySelector("#sidevogn_container")
-		.classList.add(randomPos, "rotate_arm");
+	sidevognContainer.classList.add(randomSpd);
+	sidevognContainer.offsetHeight;
+	sidevognContainer.classList.add(randomPos, "rotate_arm");
 
-	document
-		.querySelector("#sidevogn_container")
-		.addEventListener("mousedown", clickHandlerSidevogn);
-	document
-		.querySelector("#sidevogn_container")
-		.addEventListener("animationiteration", resetSidevogn);
-	console.log(randomPos);
+	sidevognContainer.addEventListener("mousedown", clickHandlerSidevogn);
+	sidevognContainer.addEventListener("animationiteration", resetSidevogn);
+	sidevognContainer.firstElementChild.addEventListener(
+		"animationend",
+		resetSidevogn
+	);
+}
+function stopSidevogn() {
+	sidevognContainer.classList = "";
+	sidevognContainer.firstElementChild.classList = "";
+
+	sidevognContainer.removeEventListener("mousedown", clickHandlerVand);
+	sidevognContainer.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	sidevognContainer.removeEventListener("animationiteration", resetVand);
+	sidevognContainer.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Telefon Funktioner ---------------------------------------------------*/
@@ -211,53 +250,49 @@ function telefonAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	document
-		.querySelector("#telefon_container")
-		.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	telefonContainer.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
 	// Fadøl Animationer
-	document
-		.querySelector("#telefon_container")
-		.addEventListener("mousedown", clickHandlerTelefon);
-	document
-		.querySelector("#telefon_sprite")
-		.addEventListener("animationend", resetTelefon);
-	document
-		.querySelector("#telefon_container")
-		.addEventListener("animationiteration", resetTelefon);
+	telefonContainer.addEventListener("mousedown", clickHandlerTelefon);
+	telefonContainer.firstElementChild.addEventListener(
+		"animationend",
+		resetTelefon
+	);
+	telefonContainer.addEventListener("animationiteration", resetTelefon);
 }
 function clickHandlerTelefon() {
-	document
-		.querySelector("#telefon_container")
-		.removeEventListener("mousedown", clickHandlerTelefon);
-	document.querySelector("#telefon_container").classList.add("pause");
-	document.querySelector("#telefon_sprite").classList.add("fade_out");
-	document.querySelector("#telefon_container").classList.remove("rotate_arm");
+	telefonContainer.removeEventListener("mousedown", clickHandlerTelefon);
+	telefonContainer.classList.add("pause");
+	telefonContainer.firstElementChild.classList.add("fade_out");
 
 	// Vis Taxa Gameover skærm
 }
 function resetTelefon() {
-	document
-		.querySelector("#telefon_container")
-		.removeEventListener("animationiteration", resetTelefon);
+	telefonContainer.removeEventListener("animationiteration", resetTelefon);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	document.querySelector("#telefon_container").classList = "";
-	document.querySelector("#telefon_sprite").classList = "";
+	telefonContainer.classList = "";
+	telefonContainer.firstElementChild.classList = "";
 
-	document.querySelector("#telefon_container").classList.add(randomSpd);
-	document.querySelector("#telefon_container").offsetHeight;
-	document
-		.querySelector("#telefon_container")
-		.classList.add(randomPos, "rotate_arm");
+	telefonContainer.classList.add(randomSpd);
+	telefonContainer.offsetHeight;
+	telefonContainer.classList.add(randomPos, "rotate_arm");
 
-	document
-		.querySelector("#telefon_container")
-		.addEventListener("mousedown", clickHandlerTelefon);
-	document
-		.querySelector("#telefon_container")
-		.addEventListener("animationiteration", resetTelefon);
-	console.log(randomPos);
+	telefonContainer.addEventListener("mousedown", clickHandlerTelefon);
+	telefonContainer.addEventListener("animationiteration", resetTelefon);
+}
+function stopTelefon() {
+	telefonContainer.classList = "";
+	telefonContainer.firstElementChild.classList = "";
+
+	telefonContainer.removeEventListener("mousedown", clickHandlerVand);
+	telefonContainer.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	telefonContainer.removeEventListener("animationiteration", resetVand);
+	telefonContainer.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Model Funktioner ---------------------------------------------------*/
@@ -275,4 +310,22 @@ function randomSpeed() {
 	let randomTal = Math.floor(Math.random() * 4) + 1;
 	let randomSpeed = "speed" + randomTal;
 	return randomSpeed;
+}
+function startTimer() {
+	viser.classList.add("timer");
+	viser.addEventListener("animationend", stopSpillet);
+}
+function stopSpillet() {
+	stopBeer();
+	stopSidevogn();
+	stopTelefon();
+	stopVand();
+	faceChoice;
+}
+function faceChoice() {
+	if (point == 10) {
+		face.classList.add("face3");
+	} else if (point > 3 && point < 10) {
+		face.classList.add("face2");
+	} else face.classList.add("face1");
 }

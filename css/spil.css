@@ -8,7 +8,7 @@
 
 @font-face {
 	font-family: "Nexa-Bold";
-	src: url("../fonts/nexa_bold-webfont.woff2") format("woff2");
+	src: url(../fonts/nexa_bold-webfont.woff2) format("woff2");
 }
 /*------------------------------------------------ Generelt ------------------------------------------------*/
 #screen {
@@ -287,7 +287,7 @@
 	background-size: cover;
 }
 
-/*------------------------------------------------ Trykke Elementer Positioner ------------------------------------------------*/
+/*------------------------------------------------ Trykke Elementer Details------------------------------------------------*/
 .delay1 {
 	animation-delay: 100ms;
 }
@@ -355,6 +355,10 @@
 	left: 89vw;
 }
 
+.pause {
+	animation-play-state: paused;
+}
+
 /* UI Element - Barometer */
 .barometer1 {
 	background-image: url("../assets/ui_elementer/barometer/barometer_1.svg");
@@ -395,7 +399,7 @@
 	position: absolute;
 
 	font-family: Nexa-Bold, sans-serif;
-	font-size: 3rem;
+	font-size: 2vw;
 	text-align: center;
 	padding-top: 3.5rem;
 }
@@ -412,7 +416,7 @@
 }
 #mood_board {
 	/* ratio 93:176 */
-	background-image: url("../assets/figure/hoved_1.svg");
+
 	width: 11vw;
 	height: 20.81vw;
 	background-size: cover;
@@ -421,6 +425,17 @@
 	top: 1vw;
 	left: 2vw;
 }
+.face1 {
+	background-image: url("../assets/figure/hoved_1.svg");
+}
+.face2 {
+	background-image: url("../assets/figure/hoved_2.svg");
+}
+.face3 {
+	background-image: url("../assets/figure/hoved_3.svg");
+}
+
+/* UI Element - Timer */
 #time_board {
 	/* ratio 53:173 */
 	background-image: url("../assets/ui_elementer/ur.svg");
@@ -431,4 +446,18 @@
 	position: absolute;
 	top: 1vw;
 	left: 88vw;
+}
+#viser {
+	/* ratio 53:173 */
+	background-color: red;
+	width: 0.5vw;
+	height: 3.5vw;
+	background-size: cover;
+	border-radius: 999px;
+
+	position: absolute;
+	top: 1.55vw;
+	left: 4.8vw;
+	z-index: 10;
+	transform-origin: 50% 100%;
 }
