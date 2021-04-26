@@ -84,11 +84,26 @@
 
 /*------------------------------------------------ Spil Elementer ------------------------------------------------*/
 
+#mand_container_1 {
+	position: absolute;
+	top: 30vw;
+	left: 5vw;
+	z-index: 100;
+}
+#mand_sprite_1 {
+	/* ratio 4:5 */
+	background-image: url("../assets/figure/ensemble_mand.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+	z-index: 5;
+}
+
 #kvinde_container_1 {
 	position: absolute;
 	left: 14vw;
 	top: 20vw;
-	z-index: 1;
+	z-index: 90;
 }
 #kvinde_sprite_1 {
 	/* ratio 24:97 */
@@ -102,7 +117,7 @@
 	position: absolute;
 	left: 24vw;
 	top: 25vw;
-	z-index: 1;
+	z-index: 80;
 }
 #kvinde_sprite_2 {
 	/* ratio 24:97 */
@@ -112,11 +127,25 @@
 	background-size: cover;
 }
 
+#skaldet_container_1 {
+	position: absolute;
+	top: 30vw;
+	left: 33vw;
+	z-index: 70;
+}
+#skaldet_sprite_1 {
+	/* ratio 7:8 */
+	background-image: url("../assets/figure/ensemble_skaldet.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
+}
+
 #kvinde_container_3 {
 	position: absolute;
 	left: 40vw;
 	top: 16vw;
-	z-index: 1;
+	z-index: 60;
 }
 #kvinde_sprite_3 {
 	/* ratio 24:97 */
@@ -126,40 +155,11 @@
 	background-size: cover;
 }
 
-#kvinde_container_4 {
-	position: absolute;
-	left: 77vw;
-	top: 22vw;
-	z-index: 1;
-}
-#kvinde_sprite_4 {
-	/* ratio 24:97 */
-	background-image: url("../assets/figure/ensemble_kvinde.svg");
-	width: 6vw;
-	height: 24.25vw;
-	background-size: cover;
-}
-
-#mand_container_1 {
-	position: absolute;
-	top: 30vw;
-	left: 5vw;
-	z-index: 10;
-}
-#mand_sprite_1 {
-	/* ratio 4:5 */
-	background-image: url("../assets/figure/ensemble_mand.svg");
-	width: 6vw;
-	height: 24.25vw;
-	background-size: cover;
-	z-index: 5;
-}
-
 #mand_container_2 {
 	position: absolute;
 	top: 35vw;
 	left: 50vw;
-	z-index: 10;
+	z-index: 50;
 }
 #mand_sprite_2 {
 	/* ratio 4:5 */
@@ -174,7 +174,7 @@
 	position: absolute;
 	top: 20vw;
 	left: 57vw;
-	z-index: 10;
+	z-index: 40;
 }
 #mand_sprite_3 {
 	/* ratio 4:5 */
@@ -185,26 +185,11 @@
 	z-index: 5;
 }
 
-#skaldet_container_1 {
-	position: absolute;
-	top: 30vw;
-	left: 33vw;
-	z-index: 10;
-}
-#skaldet_sprite_1 {
-	/* ratio 7:8 */
-	background-image: url("../assets/figure/ensemble_skaldet.svg");
-	width: 6vw;
-	height: 24.25vw;
-	background-size: cover;
-	z-index: 5;
-}
-
 #skaldet_container_2 {
 	position: absolute;
 	top: 28vw;
 	left: 70vw;
-	z-index: 10;
+	z-index: 30;
 }
 #skaldet_sprite_2 {
 	/* ratio 7:8 */
@@ -212,7 +197,20 @@
 	width: 6vw;
 	height: 24.25vw;
 	background-size: cover;
-	z-index: 5;
+}
+
+#kvinde_container_4 {
+	position: absolute;
+	left: 77vw;
+	top: 22vw;
+	z-index: 20;
+}
+#kvinde_sprite_4 {
+	/* ratio 24:97 */
+	background-image: url("../assets/figure/ensemble_kvinde.svg");
+	width: 6vw;
+	height: 24.25vw;
+	background-size: cover;
 }
 
 #skaldet_container_3 {
@@ -227,13 +225,11 @@
 	width: 6vw;
 	height: 24.25vw;
 	background-size: cover;
-	z-index: 5;
 }
 
 /*------------------------------------------------ Trykke Elementer ------------------------------------------------*/
 #beer_container {
 	position: absolute;
-	z-index: 5;
 	transform-origin: 0 0;
 	opacity: 0;
 }
@@ -247,7 +243,6 @@
 
 #sidevogn_container {
 	position: absolute;
-	z-index: 5;
 	transform-origin: 0 0;
 	opacity: 0;
 }
@@ -261,7 +256,6 @@
 
 #telefon_container {
 	position: absolute;
-	z-index: 5;
 	transform-origin: 0 0;
 	opacity: 0;
 }
@@ -275,7 +269,6 @@
 
 #vand_container {
 	position: absolute;
-	z-index: 5;
 	transform-origin: 0 0;
 	opacity: 0;
 }
@@ -317,42 +310,52 @@
 .pos1 {
 	top: 39vw;
 	left: 9vw;
+	z-index: 99;
 }
 .pos2 {
 	top: 28vw;
 	left: 17.5vw;
+	z-index: 89;
 }
 .pos3 {
 	top: 33vw;
 	left: 27.5vw;
+	z-index: 79;
 }
 .pos4 {
 	top: 37vw;
 	left: 37vw;
+	z-index: 69;
 }
 .pos5 {
 	top: 24vw;
 	left: 43.5vw;
+	z-index: 59;
 }
 .pos6 {
 	top: 43vw;
 	left: 54vw;
+	z-index: 49;
 }
 .pos7 {
 	top: 28vw;
 	left: 61vw;
+	z-index: 39;
 }
 .pos8 {
 	top: 35vw;
 	left: 74vw;
+	z-index: 29;
 }
 .pos9 {
 	top: 29.5vw;
 	left: 80.5vw;
+	z-index: 19;
 }
 .pos10 {
 	top: 37vw;
 	left: 89vw;
+	z-index: 9;
 }
 
 .pause {
