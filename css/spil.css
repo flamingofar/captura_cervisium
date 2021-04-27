@@ -66,6 +66,24 @@
 	background-size: cover;
 }
 
+#blur_box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 110;
+}
+.blur1 {
+	filter: blur(2px);
+}
+.blur2 {
+	filter: blur(3px);
+}
+.blur3 {
+	filter: blur(6px);
+}
+
 #game_elements {
 	position: absolute;
 	width: 100%;
@@ -80,6 +98,8 @@
 	height: 100%;
 	top: 0;
 	left: 0;
+	pointer-events: none;
+	z-index: 110;
 }
 
 /*------------------------------------------------ Spil Elementer ------------------------------------------------*/
@@ -228,12 +248,36 @@
 }
 
 /*------------------------------------------------ Trykke Elementer ------------------------------------------------*/
-#beer_container {
+#beer_container1 {
 	position: absolute;
 	transform-origin: 0 0;
 	opacity: 0;
 }
-#beer_sprite {
+#beer_sprite1 {
+	/* ratio 9:7 */
+	background-image: url("../assets/ui_elementer/arm_fadøl.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+#beer_container2 {
+	position: absolute;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+#beer_sprite2 {
+	/* ratio 9:7 */
+	background-image: url("../assets/ui_elementer/arm_fadøl.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+#beer_container3 {
+	position: absolute;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+#beer_sprite3 {
 	/* ratio 9:7 */
 	background-image: url("../assets/ui_elementer/arm_fadøl.svg");
 	width: 7.7vw;
@@ -241,12 +285,24 @@
 	background-size: cover;
 }
 
-#sidevogn_container {
+#sidevogn_container1 {
 	position: absolute;
 	transform-origin: 0 0;
 	opacity: 0;
 }
-#sidevogn_sprite {
+#sidevogn_sprite1 {
+	/* ratio 9:7 */
+	background-image: url("../assets/ui_elementer/arm_fadøl_sidevogn.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+#sidevogn_container2 {
+	position: absolute;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+#sidevogn_sprite2 {
 	/* ratio 9:7 */
 	background-image: url("../assets/ui_elementer/arm_fadøl_sidevogn.svg");
 	width: 7.7vw;
@@ -254,12 +310,24 @@
 	background-size: cover;
 }
 
-#telefon_container {
+#telefon_container1 {
 	position: absolute;
 	transform-origin: 0 0;
 	opacity: 0;
 }
-#telefon_sprite {
+#telefon_sprite1 {
+	/* ratio 9:7 */
+	background-image: url("../assets/ui_elementer/arm_telefon.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+#telefon_container2 {
+	position: absolute;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+#telefon_sprite2 {
 	/* ratio 9:7 */
 	background-image: url("../assets/ui_elementer/arm_telefon.svg");
 	width: 7.7vw;
@@ -267,12 +335,38 @@
 	background-size: cover;
 }
 
-#vand_container {
+#vand_container1 {
 	position: absolute;
 	transform-origin: 0 0;
 	opacity: 0;
 }
-#vand_sprite {
+#vand_sprite2 {
+	/* ratio 9:7 */
+	background-image: url("../assets/ui_elementer/arm_vand.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+
+#vand_container2 {
+	position: absolute;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+#vand_sprite1 {
+	/* ratio 9:7 */
+	background-image: url("../assets/ui_elementer/arm_vand.svg");
+	width: 7.7vw;
+	height: 6vw;
+	background-size: cover;
+}
+
+#vand_container3 {
+	position: absolute;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+#vand_sprite3 {
 	/* ratio 9:7 */
 	background-image: url("../assets/ui_elementer/arm_vand.svg");
 	width: 7.7vw;

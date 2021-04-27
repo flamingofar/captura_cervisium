@@ -1,12 +1,26 @@
 /** @format */
-const beerContainer = document.querySelector("#beer_container");
-const sidevognContainer = document.querySelector("#sidevogn_container");
-const vandContainer = document.querySelector("#vand_container");
-const telefonContainer = document.querySelector("#telefon_container");
+/*--------------------------------------------------- Fadøl ---------------------------------------------------*/
+const beerContainer1 = document.querySelector("#beer_container1");
+const beerContainer2 = document.querySelector("#beer_container2");
+const beerContainer3 = document.querySelector("#beer_container3");
+/*--------------------------------------------------- Sidevogn ---------------------------------------------------*/
+const sidevognContainer1 = document.querySelector("#sidevogn_container1");
+const sidevognContainer2 = document.querySelector("#sidevogn_container2");
+/*--------------------------------------------------- Vand ---------------------------------------------------*/
+const vandContainer1 = document.querySelector("#vand_container1");
+const vandContainer2 = document.querySelector("#vand_container2");
+const vandContainer3 = document.querySelector("#vand_container3");
+/*--------------------------------------------------- Telefon ---------------------------------------------------*/
+const telefonContainer1 = document.querySelector("#telefon_container1");
+const telefonContainer2 = document.querySelector("#telefon_container2");
+/*--------------------------------------------------- Barometer ---------------------------------------------------*/
 const energyBoard = document.querySelector("#energy_board");
 const energyCount = document.querySelector("#energy_board_count");
+/*--------------------------------------------------- Timer ---------------------------------------------------*/
 const viser = document.querySelector("#viser");
 const face = document.querySelector("#mood_board");
+/*--------------------------------------------------- Blur Box ---------------------------------------------------*/
+const blurBox = document.querySelector("#blur_box");
 
 let point;
 let promilleTxt;
@@ -34,16 +48,25 @@ function vandAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	vandContainer.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	vandContainer.addEventListener("mousedown", clickHandlerVand);
-	vandContainer.firstElementChild.addEventListener("animationend", resetVand);
+	vandContainer1.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	vandContainer2.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	vandContainer3.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	// Vand Animationer
+	vandContainer1.addEventListener("mousedown", clickHandlerVand);
+	vandContainer1.addEventListener("animationiteration", resetVand);
 
-	vandContainer.addEventListener("animationiteration", resetVand);
+	vandContainer2.addEventListener("mousedown", clickHandlerVand);
+	vandContainer2.addEventListener("animationiteration", resetVand);
+
+	vandContainer3.addEventListener("mousedown", clickHandlerVand);
+	vandContainer3.addEventListener("animationiteration", resetVand);
 }
 function clickHandlerVand() {
-	vandContainer.removeEventListener("mousedown", clickHandlerVand);
-	vandContainer.classList.add("pause");
-	vandContainer.firstElementChild.classList.add("blow_out");
+	this.removeEventListener("mousedown", clickHandlerVand);
+
+	this.classList.add("pause");
+	this.firstElementChild.classList.add("blow_out");
+	this.addEventListener("animationend", resetVand);
 
 	// +1 Promille, udskriv point
 	promilleTxt -= 0.3;
@@ -60,34 +83,59 @@ function clickHandlerVand() {
 			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
 		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	}
+
 	faceChoice();
 }
 function resetVand() {
-	vandContainer.removeEventListener("animationiteration", resetVand);
+	this.removeEventListener("animationiteration", resetVand);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	vandContainer.classList = "";
-	vandContainer.firstElementChild.classList = "";
+	this.classList = "";
+	this.firstElementChild.classList = "";
 
-	vandContainer.classList.add(randomSpd);
-	vandContainer.offsetHeight;
-	vandContainer.classList.add(randomPos, "rotate_arm");
-	vandContainer.addEventListener("animationiteration", resetVand);
-	vandContainer.addEventListener("mousedown", clickHandlerVand);
+	this.classList.add(randomSpd);
+	this.offsetHeight;
+	this.classList.add(randomPos, "rotate_arm");
+	this.addEventListener("animationiteration", resetVand);
+	this.addEventListener("mousedown", clickHandlerVand);
 }
 function stopVand() {
-	vandContainer.classList = "";
-	vandContainer.firstElementChild.classList = "";
+	vandContainer1.classList = "";
+	vandContainer1.firstElementChild.classList = "";
 
-	vandContainer.removeEventListener("mousedown", clickHandlerVand);
-	vandContainer.firstElementChild.removeEventListener(
+	vandContainer1.removeEventListener("mousedown", clickHandlerVand);
+	vandContainer1.firstElementChild.removeEventListener(
 		"animationend",
 		resetVand
 	);
 
-	vandContainer.removeEventListener("animationiteration", resetVand);
-	vandContainer.removeEventListener("mousedown", clickHandlerVand);
+	vandContainer1.removeEventListener("animationiteration", resetVand);
+	vandContainer1.removeEventListener("mousedown", clickHandlerVand);
+
+	vandContainer2.classList = "";
+	vandContainer2.firstElementChild.classList = "";
+
+	vandContainer2.removeEventListener("mousedown", clickHandlerVand);
+	vandContainer2.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	vandContainer2.removeEventListener("animationiteration", resetVand);
+	vandContainer2.removeEventListener("mousedown", clickHandlerVand);
+
+	vandContainer3.classList = "";
+	vandContainer3.firstElementChild.classList = "";
+
+	vandContainer3.removeEventListener("mousedown", clickHandlerVand);
+	vandContainer3.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	vandContainer3.removeEventListener("animationiteration", resetVand);
+	vandContainer3.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Fadøl Funktioner ---------------------------------------------------*/
@@ -96,16 +144,24 @@ function beerAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	beerContainer.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	beerContainer1.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	beerContainer2.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	beerContainer3.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
 	// Fadøl Animationer
-	beerContainer.addEventListener("mousedown", clickHandlerBeer);
-	beerContainer.firstElementChild.addEventListener("animationend", resetBeer);
-	beerContainer.addEventListener("animationiteration", resetBeer);
+	beerContainer1.addEventListener("mousedown", clickHandlerBeer);
+	beerContainer1.addEventListener("animationiteration", resetBeer);
+
+	beerContainer2.addEventListener("mousedown", clickHandlerBeer);
+	beerContainer2.addEventListener("animationiteration", resetBeer);
+
+	beerContainer3.addEventListener("mousedown", clickHandlerBeer);
+	beerContainer3.addEventListener("animationiteration", resetBeer);
 }
 function clickHandlerBeer() {
-	beerContainer.removeEventListener("mousedown", clickHandlerBeer);
-	beerContainer.classList.add("pause");
-	beerContainer.firstElementChild.classList.add("fade_out");
+	this.removeEventListener("mousedown", clickHandlerBeer);
+	this.classList.add("pause");
+	this.firstElementChild.classList.add("fade_out");
+	this.addEventListener("animationend", resetBeer);
 
 	// +0.3 promille, ++ point, udskriv point
 	promilleTxt += 0.3;
@@ -131,32 +187,56 @@ function clickHandlerBeer() {
 	faceChoice();
 }
 function resetBeer() {
-	beerContainer.removeEventListener("animationiteration", resetBeer);
+	this.removeEventListener("animationiteration", resetBeer);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	beerContainer.classList = "";
-	beerContainer.firstElementChild.classList = "";
+	this.classList = "";
+	this.firstElementChild.classList = "";
 
-	beerContainer.classList.add(randomSpd);
-	beerContainer.offsetHeight;
-	beerContainer.classList.add(randomPos, "rotate_arm");
+	this.classList.add(randomSpd);
+	this.offsetHeight;
+	this.classList.add(randomPos, "rotate_arm");
 
-	beerContainer.addEventListener("mousedown", clickHandlerBeer);
-	beerContainer.addEventListener("animationiteration", resetBeer);
+	this.addEventListener("mousedown", clickHandlerBeer);
+	this.addEventListener("animationiteration", resetBeer);
 }
 function stopBeer() {
-	beerContainer.classList = "";
-	beerContainer.firstElementChild.classList = "";
+	beerContainer1.classList = "";
+	beerContainer1.firstElementChild.classList = "";
 
-	beerContainer.removeEventListener("mousedown", clickHandlerVand);
-	beerContainer.firstElementChild.removeEventListener(
+	beerContainer1.removeEventListener("mousedown", clickHandlerVand);
+	beerContainer1.firstElementChild.removeEventListener(
 		"animationend",
 		resetVand
 	);
 
-	beerContainer.removeEventListener("animationiteration", resetVand);
-	beerContainer.removeEventListener("mousedown", clickHandlerVand);
+	beerContainer1.removeEventListener("animationiteration", resetVand);
+	beerContainer1.removeEventListener("mousedown", clickHandlerVand);
+
+	beerContainer2.classList = "";
+	beerContainer2.firstElementChild.classList = "";
+
+	beerContainer2.removeEventListener("mousedown", clickHandlerVand);
+	beerContainer2.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	beerContainer2.removeEventListener("animationiteration", resetVand);
+	beerContainer2.removeEventListener("mousedown", clickHandlerVand);
+
+	beerContainer3.classList = "";
+	beerContainer3.firstElementChild.classList = "";
+
+	beerContainer3.removeEventListener("mousedown", clickHandlerVand);
+	beerContainer3.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	beerContainer3.removeEventListener("animationiteration", resetVand);
+	beerContainer3.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Sidevogn Funktioner ---------------------------------------------------*/
@@ -165,25 +245,31 @@ function sidevognAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	sidevognContainer.classList.add(
+	sidevognContainer1.classList.add(
+		"rotate_arm",
+		randomPos,
+		randomDel,
+		randomSpd
+	);
+	sidevognContainer2.classList.add(
 		"rotate_arm",
 		randomPos,
 		randomDel,
 		randomSpd
 	);
 	// Fadøl Animationer
-	sidevognContainer.addEventListener("mousedown", clickHandlerSidevogn);
-	sidevognContainer.firstElementChild.addEventListener(
-		"animationend",
-		resetSidevogn
-	);
-	sidevognContainer.addEventListener("animationiteration", resetSidevogn);
+	sidevognContainer1.addEventListener("mousedown", clickHandlerSidevogn);
+	sidevognContainer1.addEventListener("animationiteration", resetSidevogn);
+
+	sidevognContainer2.addEventListener("mousedown", clickHandlerSidevogn);
+	sidevognContainer2.addEventListener("animationiteration", resetSidevogn);
 }
 function clickHandlerSidevogn() {
-	sidevognContainer.removeEventListener("mousedown", clickHandlerSidevogn);
-	sidevognContainer.classList.add("pause");
-	sidevognContainer.firstElementChild.classList.add("fade_out");
-	console.log("clicked");
+	this.removeEventListener("mousedown", clickHandlerSidevogn);
+	this.classList.add("pause");
+	this.firstElementChild.classList.add("fade_out");
+	this.addEventListener("animationend", resetSidevogn);
+
 	// +0.6 Promille, ++ point, udskriv point
 	promilleTxt += 0.6;
 	point += 2;
@@ -208,40 +294,44 @@ function clickHandlerSidevogn() {
 	faceChoice();
 }
 function resetSidevogn() {
-	sidevognContainer.firstElementChild.removeEventListener(
-		"animationend",
-		resetSidevogn
-	);
-	sidevognContainer.removeEventListener("animationiteration", resetSidevogn);
+	this.removeEventListener("animationend", resetSidevogn);
+	this.removeEventListener("animationiteration", resetSidevogn);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	sidevognContainer.classList = "";
-	sidevognContainer.firstElementChild.classList = "";
+	this.classList = "";
+	this.firstElementChild.classList = "";
+	this.classList.add(randomSpd);
+	this.offsetHeight;
+	this.classList.add(randomPos, "rotate_arm");
 
-	sidevognContainer.classList.add(randomSpd);
-	sidevognContainer.offsetHeight;
-	sidevognContainer.classList.add(randomPos, "rotate_arm");
-
-	sidevognContainer.addEventListener("mousedown", clickHandlerSidevogn);
-	sidevognContainer.addEventListener("animationiteration", resetSidevogn);
-	sidevognContainer.firstElementChild.addEventListener(
-		"animationend",
-		resetSidevogn
-	);
+	this.addEventListener("mousedown", clickHandlerSidevogn);
+	this.addEventListener("animationiteration", resetSidevogn);
 }
 function stopSidevogn() {
-	sidevognContainer.classList = "";
-	sidevognContainer.firstElementChild.classList = "";
+	sidevognContainer1.classList = "";
+	sidevognContainer1.firstElementChild.classList = "";
 
-	sidevognContainer.removeEventListener("mousedown", clickHandlerVand);
-	sidevognContainer.firstElementChild.removeEventListener(
+	sidevognContainer1.removeEventListener("mousedown", clickHandlerVand);
+	sidevognContainer1.firstElementChild.removeEventListener(
 		"animationend",
 		resetVand
 	);
 
-	sidevognContainer.removeEventListener("animationiteration", resetVand);
-	sidevognContainer.removeEventListener("mousedown", clickHandlerVand);
+	sidevognContainer1.removeEventListener("animationiteration", resetVand);
+	sidevognContainer1.removeEventListener("mousedown", clickHandlerVand);
+
+	sidevognContainer2.classList = "";
+	sidevognContainer2.firstElementChild.classList = "";
+
+	sidevognContainer2.removeEventListener("mousedown", clickHandlerVand);
+	sidevognContainer2.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	sidevognContainer2.removeEventListener("animationiteration", resetVand);
+	sidevognContainer2.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Telefon Funktioner ---------------------------------------------------*/
@@ -250,49 +340,70 @@ function telefonAnimationer() {
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	telefonContainer.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	// Fadøl Animationer
-	telefonContainer.addEventListener("mousedown", clickHandlerTelefon);
-	telefonContainer.firstElementChild.addEventListener(
-		"animationend",
-		resetTelefon
+	telefonContainer1.classList.add(
+		"rotate_arm",
+		randomPos,
+		randomDel,
+		randomSpd
 	);
-	telefonContainer.addEventListener("animationiteration", resetTelefon);
+	telefonContainer2.classList.add(
+		"rotate_arm",
+		randomPos,
+		randomDel,
+		randomSpd
+	);
+	// Fadøl Animationer
+	telefonContainer1.addEventListener("mousedown", clickHandlerTelefon);
+	telefonContainer1.addEventListener("animationiteration", resetTelefon);
+	telefonContainer2.addEventListener("mousedown", clickHandlerTelefon);
+	telefonContainer2.addEventListener("animationiteration", resetTelefon);
 }
 function clickHandlerTelefon() {
-	telefonContainer.removeEventListener("mousedown", clickHandlerTelefon);
-	telefonContainer.classList.add("pause");
-	telefonContainer.firstElementChild.classList.add("fade_out");
+	this.removeEventListener("mousedown", clickHandlerTelefon);
+	this.classList.add("pause");
+	this.firstElementChild.classList.add("fade_out");
 
 	// Vis Taxa Gameover skærm
 }
 function resetTelefon() {
-	telefonContainer.removeEventListener("animationiteration", resetTelefon);
+	this.removeEventListener("animationiteration", resetTelefon);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
-	telefonContainer.classList = "";
-	telefonContainer.firstElementChild.classList = "";
+	this.classList = "";
+	this.firstElementChild.classList = "";
 
-	telefonContainer.classList.add(randomSpd);
-	telefonContainer.offsetHeight;
-	telefonContainer.classList.add(randomPos, "rotate_arm");
+	this.classList.add(randomSpd);
+	this.offsetHeight;
+	this.classList.add(randomPos, "rotate_arm");
 
-	telefonContainer.addEventListener("mousedown", clickHandlerTelefon);
-	telefonContainer.addEventListener("animationiteration", resetTelefon);
+	this.addEventListener("mousedown", clickHandlerTelefon);
+	this.addEventListener("animationiteration", resetTelefon);
 }
 function stopTelefon() {
-	telefonContainer.classList = "";
-	telefonContainer.firstElementChild.classList = "";
+	telefonContainer1.classList = "";
+	telefonContainer1.firstElementChild.classList = "";
 
-	telefonContainer.removeEventListener("mousedown", clickHandlerVand);
-	telefonContainer.firstElementChild.removeEventListener(
+	telefonContainer1.removeEventListener("mousedown", clickHandlerVand);
+	telefonContainer1.firstElementChild.removeEventListener(
 		"animationend",
 		resetVand
 	);
 
-	telefonContainer.removeEventListener("animationiteration", resetVand);
-	telefonContainer.removeEventListener("mousedown", clickHandlerVand);
+	telefonContainer1.removeEventListener("animationiteration", resetVand);
+	telefonContainer1.removeEventListener("mousedown", clickHandlerVand);
+
+	telefonContainer2.classList = "";
+	telefonContainer2.firstElementChild.classList = "";
+
+	telefonContainer2.removeEventListener("mousedown", clickHandlerVand);
+	telefonContainer2.firstElementChild.removeEventListener(
+		"animationend",
+		resetVand
+	);
+
+	telefonContainer2.removeEventListener("animationiteration", resetVand);
+	telefonContainer2.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Model Funktioner ---------------------------------------------------*/
@@ -323,9 +434,14 @@ function stopSpillet() {
 	faceChoice;
 }
 function faceChoice() {
-	if (point == 10) {
+	if (point >= 10) {
 		face.classList.add("face3");
+		blurBox.classList.add("blur3");
 	} else if (point > 3 && point < 10) {
 		face.classList.add("face2");
-	} else face.classList.add("face1");
+		blurBox.classList.add("blur2");
+	} else {
+		face.classList.add("face1");
+		blurBox.classList.add("blur1");
+	}
 }
