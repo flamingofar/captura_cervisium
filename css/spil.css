@@ -18,8 +18,8 @@
 	width: 100vw;
 	height: 56.25vw;
 	overflow: hidden;
+	margin-bottom: 10vw;
 }
-
 #game {
 	position: absolute;
 	width: 100%;
@@ -28,34 +28,350 @@
 	left: 0;
 	overflow: hidden;
 }
-
+/*------------------------------------------------ Start Skærm ------------------------------------------------*/
 #start {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	display: none;
+	background: url("../assets/screens/bg_lys.svg");
+	background-size: cover;
+	z-index: 210;
+}
+#halo {
+	position: absolute;
+	width: 20vw;
+	height: 5vw;
+	top: 5vw;
+	left: 50%;
+	background: url("../assets/screens/halo.svg");
+	background-size: cover;
+	z-index: 201;
+}
+#captura {
+	position: absolute;
+	transform: translate(-50%, -50%) scale(0);
+	width: 84vw;
+	height: 20vw;
+	top: 20vw;
+	left: 50%;
+	background: url("../assets/screens/captura_cervisiam.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#start_btn {
+	position: absolute;
+	width: 25vw;
+	height: 11vw;
+	top: 38vw;
+	left: 37vw;
+	background: url("../assets/knapper/start_knap.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#start_figur {
+	position: absolute;
+	width: 18vw;
+	height: 20.7vw;
+	top: 31vw;
+	left: 70vw;
+	background: url("../assets/figure/figur_hopla.svg");
+	background-size: cover;
+	z-index: 201;
 }
 
+/*------------------------------------------------ Info Skærm ------------------------------------------------*/
+#info_screen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: url("../assets/screens/spil_baggrund.svg");
+	background-size: cover;
+	z-index: 200;
+}
+#info_box {
+	position: absolute;
+	width: 90vw;
+	height: 48vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: url("../assets/ui_elementer/info_screen.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#play_btn {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/play_knap.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+
+/*------------------------------------------------ Taxa Game Over ------------------------------------------------*/
+#game_over_taxa {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: url("../assets/screens/game_over_taxa_bg.svg");
+	background-size: cover;
+	z-index: 200;
+	display: none;
+}
+#taxa_game_over {
+	position: absolute;
+	width: 70vw;
+	height: 12vw;
+	top: 8vw;
+	left: 14vw;
+	background: url("../assets/screens/game_over.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#taxa_bil {
+	position: absolute;
+	width: 50vw;
+	height: 18.25vw;
+	top: 27vw;
+	left: 22vw;
+	background: url("../assets/screens/taxa.svg");
+	background-size: cover;
+	z-index: 200;
+}
+#game_over_replay {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 42vw;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/retry_grey.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#game_over_home {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 56%;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/hjem_grey.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+
+/*------------------------------------------------ Game Over ------------------------------------------------*/
 #game_over {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
+	background: url("../assets/screens/game_over_bg.svg");
+	background-size: cover;
+	z-index: 201;
 	display: none;
 }
+#game_over_alm {
+	position: absolute;
+	width: 70vw;
+	height: 12vw;
+	top: 5vw;
+	left: 14vw;
+	background: url("../assets/screens/game_over.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#game_over_replay_alm {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 42vw;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/retry_grey.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#game_over_home_alm {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 56%;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/hjem_grey.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
 
+/*------------------------------------------------ Level Complete ------------------------------------------------*/
 #level_complete {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
+	background: url("../assets/screens/bg_lys.svg");
+	background-size: cover;
+	z-index: 201;
 	display: none;
 }
-
+#txt {
+	position: absolute;
+	width: 40vw;
+	height: 19.7vw;
+	top: 19vw;
+	left: 29.9vw;
+	background: url("../assets/screens/tillykke_box.svg");
+	background-size: cover;
+	z-index: 201;
+}
+#level_complete_txt {
+	position: absolute;
+	width: 70vw;
+	height: 16.1vw;
+	top: 1vw;
+	left: 14vw;
+	background: url("../assets/screens/level_complete.svg");
+	background-size: cover;
+	z-index: 199;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#beer_left {
+	position: absolute;
+	width: 8vw;
+	height: 17.6vw;
+	top: 19vw;
+	left: 24vw;
+	background: url("../assets/screens/beer_left.svg");
+	background-size: cover;
+	z-index: 200;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#beer_right {
+	position: absolute;
+	width: 8vw;
+	height: 17.6vw;
+	top: 19vw;
+	left: 68vw;
+	background: url("../assets/screens/beer_right.svg");
+	background-size: cover;
+	z-index: 200;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#firework1 {
+	position: absolute;
+	width: 20vw;
+	height: 20vw;
+	top: 12vw;
+	left: 22vw;
+	background: url("../assets/screens/firework_1.svg");
+	background-size: cover;
+	z-index: 199;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#firework2 {
+	position: absolute;
+	width: 25vw;
+	height: 25vw;
+	top: 9vw;
+	left: 37vw;
+	background: url("../assets/screens/firework_2.svg");
+	background-size: cover;
+	z-index: 199;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#firework3 {
+	position: absolute;
+	width: 20vw;
+	height: 20vw;
+	top: 12vw;
+	left: 58vw;
+	background: url("../assets/screens/firework_1.svg");
+	background-size: cover;
+	z-index: 199;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#dannebrog {
+	position: absolute;
+	width: 40vw;
+	height: 6.7vw;
+	top: 36.5vw;
+	left: 29.5vw;
+	background: url("../assets/screens/dannebrog_1.svg");
+	background-size: cover;
+	z-index: 202;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#play {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 44vw;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/retry_lys.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#home {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 48vw;
+	left: 56%;
+	transform: translate(-50%, -50%);
+	background: url("../assets/knapper/hjem_lys.svg");
+	background-size: cover;
+	z-index: 201;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#figur_1 {
+	position: absolute;
+	width: 22vw;
+	height: 25.3vw;
+	top: 27vw;
+	left: 9vw;
+	background: url("../assets/figure/figur_hopla.svg");
+	background-size: cover;
+	z-index: 200;
+	transform: scaleX(-1);
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+#figur_2 {
+	position: absolute;
+	width: 22vw;
+	height: 25.3vw;
+	top: 27vw;
+	left: 69vw;
+	background: url("../assets/figure/figur_hopla.svg");
+	background-size: cover;
+	z-index: 200;
+	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
+}
+/*------------------------------------------------ Baggrund ------------------------------------------------*/
 #game_background {
 	position: absolute;
 	width: 100%;
@@ -75,13 +391,13 @@
 	z-index: 110;
 }
 .blur1 {
-	filter: blur(2px);
-}
-.blur2 {
 	filter: blur(3px);
 }
-.blur3 {
+.blur2 {
 	filter: blur(6px);
+}
+.blur3 {
+	filter: blur(9px);
 }
 
 #game_elements {
@@ -451,7 +767,6 @@
 	left: 89vw;
 	z-index: 9;
 }
-
 .pause {
 	animation-play-state: paused;
 }
@@ -498,7 +813,7 @@
 	font-family: Nexa-Bold, sans-serif;
 	font-size: 2vw;
 	text-align: center;
-	padding-top: 3.5rem;
+	padding-top: 2.3vw;
 }
 #energy_board {
 	/* ratio 53:173 */
@@ -557,4 +872,24 @@
 	left: 4.8vw;
 	z-index: 10;
 	transform-origin: 50% 100%;
+}
+
+.hide {
+	display: none;
+}
+.reverse {
+	animation-direction: reverse;
+}
+
+#game_over_taxa.unhide {
+	display: block;
+}
+#game_over.unhide {
+	display: block;
+}
+#level_complete.unhide {
+	display: block;
+}
+#info_screen.unhide {
+	display: block;
 }

@@ -262,26 +262,43 @@
 					<div id="mood_board"></div>
 				</div>
 			</div>
-			<div id="start"></div>
-			<div id="game_over"></div>
-			<div id="level_complete"></div>
+			<div id="start">
+				<div id="halo"></div>
+				<div id="captura"></div>
+				<div id="start_btn"></div>
+				<div id="start_figur"></div>
+			</div>
+			<div id="info_screen">
+				<div id="info_box"></div>
+				<div id="play_btn"></div>
+			</div>
+			<div id="game_over_taxa">
+				<div id="taxa_game_over"></div>
+				<div id="taxa_bil"></div>
+				<div id="game_over_replay"></div>
+				<div id="game_over_home"></div>
+			</div>
+			<div id="game_over">
+				<div id="game_over_alm"></div>
+				<div id="game_over_replay_alm"></div>
+				<div id="game_over_home_alm"></div>
+			</div>
+			<div id="level_complete">
+				<div id="level_complete_txt"></div>
+				<div id="txt"></div>
+				<div id="beer_left"></div>
+				<div id="beer_right"></div>
+				<div id="firework1"></div>
+				<div id="firework2"></div>
+				<div id="firework3"></div>
+				<div id="dannebrog"></div>
+				<div id="play"></div>
+				<div id="home"></div>
+				<div id="figur_1"></div>
+				<div id="figur_2"></div>
+			</div>
 		</div>
 
 		<script src="js/app.js"></script>
-		<script>
-			const main_circle = document.querySelector(".main");
-			const circle_one = document.querySelector(".circle:first-child");
-			const circle_two = document.querySelector(".circle:nth-child(2)");
-			const circle_three = document.querySelector(".circle:nth-child(3)");
-			const circle_four = document.querySelector(".circle:last-child");
-
-			main_circle.addEventListener("click", () => {
-				console.log("clicked");
-				circle_one.classList.toggle("open_1");
-				circle_two.classList.toggle("open_2");
-				circle_three.classList.toggle("open_3");
-				circle_four.classList.toggle("open_4");
-			});
-		</script>
 	</body>
 </html>

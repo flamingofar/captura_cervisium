@@ -21,6 +21,27 @@ const viser = document.querySelector("#viser");
 const face = document.querySelector("#mood_board");
 /*--------------------------------------------------- Blur Box ---------------------------------------------------*/
 const blurBox = document.querySelector("#blur_box");
+/*--------------------------------------------------- Knapper ---------------------------------------------------*/
+const startKnap = document.querySelector("#start_btn");
+const infoPlayKnap = document.querySelector("#play_btn");
+/*--------------------------------------------------- Start Skærm ---------------------------------------------------*/
+const startScreen = document.querySelector("#start");
+const halo = document.querySelector("#halo");
+/*--------------------------------------------------- Info Skærm ---------------------------------------------------*/
+const captura = document.querySelector("#captura");
+const infoScreen = document.querySelector("#info_screen");
+/*--------------------------------------------------- Taxa Skærm ---------------------------------------------------*/
+const taxaScreen = document.querySelector("#game_over_taxa");
+const taxaReplay = document.querySelector("#game_over_replay");
+const taxaHome = document.querySelector("#game_over_home");
+/*--------------------------------------------------- Game Over Skærm ---------------------------------------------------*/
+const gameOverScreen = document.querySelector("#game_over");
+const gameOverReplay = document.querySelector("#game_over_replay_alm");
+const gameOverHome = document.querySelector("#game_over_home_alm");
+/*--------------------------------------------------- Level Complete Skærm ---------------------------------------------------*/
+const levelCompleteScreen = document.querySelector("#level_complete");
+const completeReplay = document.querySelector("#play");
+const completeHome = document.querySelector("#home");
 
 let point;
 let promilleTxt;
@@ -29,18 +50,20 @@ window.addEventListener("load", loaded);
 
 function loaded() {
 	console.log("loaded");
+	startScreenFn();
+	infoScreenFn();
 	startGame();
 }
 function startGame() {
 	point = 0;
 	promilleTxt = 0;
-	energyCount.innerHTML = promilleTxt + "&permil;";
+	energyBoard.classList.add("barometer" + point);
+	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	face.classList.add("face1");
 	vandAnimationer();
 	beerAnimationer();
 	sidevognAnimationer();
 	telefonAnimationer();
-	startTimer();
 }
 /*--------------------------------------------------- Vand Funktioner ---------------------------------------------------*/
 function vandAnimationer() {
@@ -62,7 +85,7 @@ function vandAnimationer() {
 	vandContainer3.addEventListener("animationiteration", resetVand);
 }
 function clickHandlerVand() {
-	this.removeEventListener("mousedown", clickHandlerVand);
+	this.addEventListener("mousedown", clickHandlerVand);
 
 	this.classList.add("pause");
 	this.firstElementChild.classList.add("blow_out");
@@ -71,23 +94,18 @@ function clickHandlerVand() {
 	// +1 Promille, udskriv point
 	promilleTxt -= 0.3;
 	point--;
+	energyBoard.classList.add("barometer" + point);
+	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
 	// Skift barometerbillede
 	if (point <= 0) {
-		document.querySelector("#energy_board").style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + 1 + ".svg')";
-
 		energyCount.innerHTML = 0 + "&permil;";
-	} else {
-		document.querySelector("#energy_board").style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
-		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	}
 
 	faceChoice();
 }
 function resetVand() {
-	this.removeEventListener("animationiteration", resetVand);
+	this.addEventListener("animationiteration", resetVand);
 	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
 
@@ -166,23 +184,15 @@ function clickHandlerBeer() {
 	// +0.3 promille, ++ point, udskriv point
 	promilleTxt += 0.3;
 	point++;
+	energyBoard.classList.add("barometer" + point);
+	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
 	// Skift barometerbillede
 	if (point <= 0) {
-		energyBoard.style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + 1 + ".svg')";
-		face.classList.add("face");
-
 		energyCount.innerHTML = 0 + "&permil;";
 	} else if (point >= 10) {
-		energyBoard.style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + 10 + ".svg')";
-		energyCount.innerHTML = 3 + "&permil;";
-		stopSpillet();
+		levelCompleteScreenFn();
 	} else {
-		energyBoard.style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
-		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	}
 	faceChoice();
 }
@@ -273,23 +283,15 @@ function clickHandlerSidevogn() {
 	// +0.6 Promille, ++ point, udskriv point
 	promilleTxt += 0.6;
 	point += 2;
+	energyBoard.classList.add("barometer" + point);
+	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
 	// Skift barometerbillede
 	if (point <= 0) {
-		energyBoard.style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + 1 + ".svg')";
-
 		energyCount.innerHTML = 0 + "&permil;";
 	} else if (point >= 10) {
-		energyBoard.style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + 10 + ".svg')";
-		energyCount.innerHTML = 3 + "&permil;";
-
-		stopSpillet();
+		levelCompleteScreenFn();
 	} else {
-		energyBoard.style.backgroundImage =
-			"url('assets/ui_elementer/barometer/barometer_" + point + ".svg')";
-		energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	}
 	faceChoice();
 }
@@ -362,8 +364,8 @@ function clickHandlerTelefon() {
 	this.removeEventListener("mousedown", clickHandlerTelefon);
 	this.classList.add("pause");
 	this.firstElementChild.classList.add("fade_out");
-
-	// Vis Taxa Gameover skærm
+	this.addEventListener("animationend", resetTelefon);
+	taxaScreenFn();
 }
 function resetTelefon() {
 	this.removeEventListener("animationiteration", resetTelefon);
@@ -406,6 +408,49 @@ function stopTelefon() {
 	telefonContainer2.removeEventListener("mousedown", clickHandlerVand);
 }
 
+/*--------------------------------------------------- Start Skærm Funktioner ---------------------------------------------------*/
+function startScreenFn() {
+	startKnap.addEventListener("click", skjulStart);
+	startKnap.classList.add("pulse");
+	halo.classList.add("text_reveal", "delay2");
+	captura.classList.add("text_reveal");
+}
+function skjulStart() {
+	captura.addEventListener("animationend", addHideAnimation);
+	startKnap.removeEventListener("click", skjulStart);
+	startKnap.classList.remove("pulse");
+	halo.classList.remove("text_reveal", "delay2");
+	captura.classList.remove("text_reveal");
+
+	halo.classList.add("text_reveal_reverse", "delay2");
+	captura.classList.add("text_reveal_reverse");
+}
+
+/*--------------------------------------------------- Info Skærm Funktioner ---------------------------------------------------*/
+function infoScreenFn() {
+	infoPlayKnap.addEventListener("click", skjulInfo);
+}
+function skjulInfo() {
+	infoScreen.classList.add("hide_kf");
+	startTimer();
+}
+
+/*--------------------------------------------------- Level Complete Skærm Funktioner ---------------------------------------------------*/
+function levelCompleteScreenFn() {
+	levelCompleteScreen.classList.add("unhide");
+	completeReplay.addEventListener("click", replay);
+}
+/*--------------------------------------------------- Game Over Skærm Funktioner ---------------------------------------------------*/
+function gameOverScreenFn() {
+	gameOverScreen.classList.add("unhide");
+	gameOverReplay.addEventListener("click", replay);
+}
+/*--------------------------------------------------- Gam Over Taxa Skærm Funktioner ---------------------------------------------------*/
+function taxaScreenFn() {
+	taxaScreen.classList.add("unhide");
+	taxaReplay.addEventListener("click", replay);
+}
+
 /*--------------------------------------------------- Model Funktioner ---------------------------------------------------*/
 function randomTal() {
 	let randomTal = Math.floor(Math.random() * 10) + 1;
@@ -427,11 +472,17 @@ function startTimer() {
 	viser.addEventListener("animationend", stopSpillet);
 }
 function stopSpillet() {
+	viser.classList.remove("timer");
+	viser.removeEventListener("animationend", stopSpillet);
 	stopBeer();
 	stopSidevogn();
 	stopTelefon();
 	stopVand();
-	faceChoice;
+	if (point == 10) {
+		levelCompleteScreen.classList.add("unhide");
+	} else {
+		gameOverScreen.classList.add("unhide");
+	}
 }
 function faceChoice() {
 	if (point >= 10) {
@@ -444,4 +495,26 @@ function faceChoice() {
 		face.classList.add("face1");
 		blurBox.classList.add("blur1");
 	}
+}
+function addHideAnimation() {
+	startScreen.classList.add("hide_kf");
+}
+function replay() {
+	infoScreen.classList = "";
+	startScreen.classList = "";
+	taxaScreen.classList = "";
+	gameOverScreen.classList = "";
+	levelCompleteScreen.classList = "";
+	viser.classList = "";
+	blurBox.classList = "";
+	energyBoard.classList = "";
+	face.classList = "";
+
+	infoScreen.classList.add("unhide");
+	startScreen.classList.add("hide");
+	taxaScreen.classList.add("hide");
+	gameOverScreen.classList.add("hide");
+	levelCompleteScreen.classList.add("hide");
+	startTimer();
+	startGame();
 }
