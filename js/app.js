@@ -27,8 +27,8 @@ const infoPlayKnap = document.querySelector("#play_btn");
 /*--------------------------------------------------- Start Skærm ---------------------------------------------------*/
 const startScreen = document.querySelector("#start");
 const halo = document.querySelector("#halo");
-/*--------------------------------------------------- Info Skærm ---------------------------------------------------*/
 const captura = document.querySelector("#captura");
+/*--------------------------------------------------- Info Skærm ---------------------------------------------------*/
 const infoScreen = document.querySelector("#info_screen");
 /*--------------------------------------------------- Taxa Skærm ---------------------------------------------------*/
 const taxaScreen = document.querySelector("#game_over_taxa");
@@ -57,7 +57,7 @@ function loaded() {
 function startGame() {
 	point = 0;
 	promilleTxt = 0;
-	energyBoard.classList.add("barometer" + point);
+	energyBoard.classList.add("barometer1");
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	face.classList.add("face1");
 	vandAnimationer();
@@ -94,6 +94,7 @@ function clickHandlerVand() {
 	// +1 Promille, udskriv point
 	promilleTxt -= 0.3;
 	point--;
+	energyBoard.classList = "";
 	energyBoard.classList.add("barometer" + point);
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
@@ -184,6 +185,7 @@ function clickHandlerBeer() {
 	// +0.3 promille, ++ point, udskriv point
 	promilleTxt += 0.3;
 	point++;
+	energyBoard.classList = "";
 	energyBoard.classList.add("barometer" + point);
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
@@ -283,6 +285,7 @@ function clickHandlerSidevogn() {
 	// +0.6 Promille, ++ point, udskriv point
 	promilleTxt += 0.6;
 	point += 2;
+	energyBoard.classList = "";
 	energyBoard.classList.add("barometer" + point);
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
@@ -410,6 +413,9 @@ function stopTelefon() {
 
 /*--------------------------------------------------- Start Skærm Funktioner ---------------------------------------------------*/
 function startScreenFn() {
+	captura.removeEventListener("animationend", addHideAnimation);
+	halo.classList = "";
+	captura.classList = "";
 	startKnap.addEventListener("click", skjulStart);
 	startKnap.classList.add("pulse");
 	halo.classList.add("text_reveal", "delay2");
@@ -424,6 +430,7 @@ function skjulStart() {
 
 	halo.classList.add("text_reveal_reverse", "delay2");
 	captura.classList.add("text_reveal_reverse");
+	infoScreen.classList = "";
 }
 
 /*--------------------------------------------------- Info Skærm Funktioner ---------------------------------------------------*/
@@ -431,6 +438,7 @@ function infoScreenFn() {
 	infoPlayKnap.addEventListener("click", skjulInfo);
 }
 function skjulInfo() {
+	console.log("tiden starter");
 	infoScreen.classList.add("hide_kf");
 	startTimer();
 }
@@ -438,17 +446,24 @@ function skjulInfo() {
 /*--------------------------------------------------- Level Complete Skærm Funktioner ---------------------------------------------------*/
 function levelCompleteScreenFn() {
 	levelCompleteScreen.classList.add("unhide");
+	viser.classList = "";
 	completeReplay.addEventListener("click", replay);
+	completeHome.addEventListener("click", home);
 }
 /*--------------------------------------------------- Game Over Skærm Funktioner ---------------------------------------------------*/
 function gameOverScreenFn() {
+	console.log("Game Over");
 	gameOverScreen.classList.add("unhide");
+	viser.classList = "";
 	gameOverReplay.addEventListener("click", replay);
+	gameOverHome.addEventListener("click", home);
 }
 /*--------------------------------------------------- Gam Over Taxa Skærm Funktioner ---------------------------------------------------*/
 function taxaScreenFn() {
 	taxaScreen.classList.add("unhide");
+	viser.classList = "";
 	taxaReplay.addEventListener("click", replay);
+	taxaHome.addEventListener("click", home);
 }
 
 /*--------------------------------------------------- Model Funktioner ---------------------------------------------------*/
@@ -481,19 +496,20 @@ function stopSpillet() {
 	if (point == 10) {
 		levelCompleteScreen.classList.add("unhide");
 	} else {
-		gameOverScreen.classList.add("unhide");
+		gameOverScreenFn();
 	}
 }
 function faceChoice() {
-	if (point >= 10) {
+	if (point >= 8 || point == 10) {
 		face.classList.add("face3");
 		blurBox.classList.add("blur3");
-	} else if (point > 3 && point < 10) {
+	} else if (point > 5 && point < 8) {
 		face.classList.add("face2");
 		blurBox.classList.add("blur2");
+	} else if (point > 2 && point <= 5) {
+		blurBox.classList.add("blur1");
 	} else {
 		face.classList.add("face1");
-		blurBox.classList.add("blur1");
 	}
 }
 function addHideAnimation() {
@@ -515,6 +531,23 @@ function replay() {
 	taxaScreen.classList.add("hide");
 	gameOverScreen.classList.add("hide");
 	levelCompleteScreen.classList.add("hide");
-	startTimer();
 	startGame();
+}
+function home() {
+	infoScreen.classList = "";
+	startScreen.classList = "";
+	taxaScreen.classList = "";
+	gameOverScreen.classList = "";
+	levelCompleteScreen.classList = "";
+	viser.classList = "";
+	blurBox.classList = "";
+	energyBoard.classList = "";
+	face.classList = "";
+
+	infoScreen.classList.add("hide");
+	startScreen.classList.add("unhide");
+	taxaScreen.classList.add("hide");
+	gameOverScreen.classList.add("hide");
+	levelCompleteScreen.classList.add("hide");
+	loaded();
 }
