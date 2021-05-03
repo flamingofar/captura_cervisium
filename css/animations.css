@@ -29,13 +29,13 @@
 	}
 }
 
-.fade_out {
-	animation-name: fade_out_kf;
+.blow_out {
+	animation-name: blow_out_kf;
 	animation-duration: 1s;
 	animation-iteration-count: 1;
 	animation-timing-function: linear;
 }
-@keyframes fade_out_kf {
+@keyframes blow_out_kf {
 	0% {
 		opacity: 1;
 	}
@@ -45,14 +45,14 @@
 		filter: drop-shadow(2vw 2vw 1vw rgb(252, 252, 251));
 	}
 }
-.blow_out {
-	animation-name: blow_out_kf;
+.fade_out {
+	animation-name: fade_out_kf;
 	animation-duration: 1s;
 	animation-iteration-count: 1;
 	animation-timing-function: linear;
 }
 
-@keyframes blow_out_kf {
+@keyframes fade_out_kf {
 	0% {
 		opacity: 1;
 	}

@@ -77,6 +77,7 @@ muteKnap.addEventListener("click", mute);
 
 /*-----------------------------------------------------------------------------------------------------------------*/
 
+const soundLvl = 0.5;
 let point, promilleTxt;
 let muted = true;
 
@@ -756,16 +757,16 @@ function muteAlt() {
 	levelCompleteSound.volume = 0;
 }
 function unMuteAlt() {
-	beerSound1.volume = 1;
-	beerSound2.volume = 1;
-	beerSound2.volume = 1;
-	beerSound4.volume = 1;
-	vandSound1.volume = 1;
-	vandSound2.volume = 1;
-	vandSound3.volume = 1;
+	beerSound1.volume = soundLvl;
+	beerSound2.volume = soundLvl;
+	beerSound2.volume = soundLvl;
+	beerSound4.volume = soundLvl;
+	vandSound1.volume = soundLvl;
+	vandSound2.volume = soundLvl;
+	vandSound3.volume = soundLvl;
 
 	gameSound.volume = 0.25;
-	gameOverSound.volume = 1;
-	taxaSound.volume = 1;
-	levelCompleteSound.volume = 1;
+	gameOverSound.volume = soundLvl;
+	taxaSound.volume = soundLvl;
+	levelCompleteSound.volume = soundLvl;
 }

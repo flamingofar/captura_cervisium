@@ -374,7 +374,7 @@
 	height: 25.3vw;
 	top: 27vw;
 	left: 9vw;
-	background: url("../assets/figure/figur_hopla.svg");
+	background: url("../assets/figure/figur_hopla_spejlet.svg");
 	background-size: cover;
 	z-index: 200;
 	transform: scaleX(-1);
@@ -631,7 +631,7 @@
 }
 #beer_sprite1 {
 	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_fadøl.svg");
+	background-image: url("../assets/ui_elementer/arm_beer.svg");
 	width: 7.7vw;
 	height: 6vw;
 	background-size: cover;
@@ -643,7 +643,7 @@
 }
 #beer_sprite2 {
 	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_fadøl.svg");
+	background-image: url("../assets/ui_elementer/arm_beer.svg");
 	width: 7.7vw;
 	height: 6vw;
 	background-size: cover;
@@ -655,7 +655,7 @@
 }
 #beer_sprite3 {
 	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_fadøl.svg");
+	background-image: url("../assets/ui_elementer/arm_beer.svg");
 	width: 7.7vw;
 	height: 6vw;
 	background-size: cover;
@@ -668,7 +668,7 @@
 }
 #sidevogn_sprite1 {
 	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_fadøl_sidevogn.svg");
+	background-image: url("../assets/ui_elementer/arm_beer_sidevogn.svg");
 	width: 7.7vw;
 	height: 6vw;
 	background-size: cover;
@@ -680,7 +680,7 @@
 }
 #sidevogn_sprite2 {
 	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_fadøl_sidevogn.svg");
+	background-image: url("../assets/ui_elementer/arm_beer_sidevogn.svg");
 	width: 7.7vw;
 	height: 6vw;
 	background-size: cover;
@@ -964,12 +964,12 @@
 	z-index: 1000;
 }
 .muted {
-	background-image: url("/assets/ui_elementer/mute_knap_muted.svg");
+	background-image: url("../assets/ui_elementer/mute_knap_muted.svg");
 	top: 53vw;
 	left: 3vw;
 }
 .unmuted {
-	background-image: url("/assets/ui_elementer/mute_knap.svg");
+	background-image: url("../assets/ui_elementer/mute_knap.svg");
 	top: 53vw;
 	left: 4vw;
 }
