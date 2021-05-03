@@ -41,6 +41,8 @@
 	}
 	100% {
 		opacity: 0;
+		transform: scale(1.5);
+		filter: drop-shadow(2vw 2vw 1vw rgb(252, 252, 251));
 	}
 }
 .blow_out {
@@ -49,13 +51,13 @@
 	animation-iteration-count: 1;
 	animation-timing-function: linear;
 }
+
 @keyframes blow_out_kf {
 	0% {
 		opacity: 1;
-		transform: scale(1);
 	}
 	100% {
-		transform: scale(5);
+		transform: scale(0);
 		opacity: 0;
 	}
 }
@@ -170,6 +172,63 @@
 		transform: translate(-50%, -50%) scale(0);
 		animation-timing-function: ease-in;
 		opacity: 0;
+	}
+}
+
+.level_complete_reveal {
+	animation-name: level_complete_reveal_kf;
+	animation-duration: 0.8s;
+	animation-fill-mode: both;
+}
+
+@keyframes level_complete_reveal_kf {
+	0% {
+		transform: scale(0);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+	30% {
+		transform: scale(0);
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+	40% {
+		transform: scale(1);
+		animation-timing-function: ease-out;
+	}
+	80% {
+		transform: scale(1.1);
+		animation-timing-function: ease-in;
+	}
+	100% {
+		transform: scale(1);
+		animation-timing-function: ease-out;
+	}
+}
+
+.taxa_drive {
+	animation-name: taxa_drive_kf;
+	animation-duration: 4s;
+	animation-fill-mode: both;
+}
+
+@keyframes taxa_drive_kf {
+	0% {
+		transform: translateX(110vw);
+		animation-timing-function: ease-in;
+	}
+	20% {
+		transform: translateX(0vw);
+		animation-timing-function: ease-out;
+	}
+
+	80% {
+		transform: translateX(0vw);
+		animation-timing-function: ease-in;
+	}
+	100% {
+		transform: translateX(-110vw);
+		animation-timing-function: ease-out;
 	}
 }
 

@@ -38,13 +38,47 @@ const taxaHome = document.querySelector("#game_over_home");
 const gameOverScreen = document.querySelector("#game_over");
 const gameOverReplay = document.querySelector("#game_over_replay_alm");
 const gameOverHome = document.querySelector("#game_over_home_alm");
+const taxaBil = document.querySelector("#taxa_bil");
 /*--------------------------------------------------- Level Complete Skærm ---------------------------------------------------*/
 const levelCompleteScreen = document.querySelector("#level_complete");
-const completeReplay = document.querySelector("#play");
+const completeReplay = document.querySelector("#replay");
 const completeHome = document.querySelector("#home");
 
-let point;
-let promilleTxt;
+const levelCompleteHeader = document.querySelector("#level_complete_txt");
+const levelCompleteTxt = document.querySelector("#txt");
+const levelCompleteBeerL = document.querySelector("#beer_left");
+const levelCompleteBeerR = document.querySelector("#beer_right");
+const levelCompleteFirework1 = document.querySelector("#firework1");
+const levelCompleteFirework2 = document.querySelector("#firework2");
+const levelCompleteFirework3 = document.querySelector("#firework3");
+const levelCompleteFlag = document.querySelector("#dannebrog");
+const levelCompleteFigur1 = document.querySelector("#figur_1");
+const levelCompleteFigur2 = document.querySelector("#figur_2");
+/*--------------------------------------------------- Sounds ---------------------------------------------------*/
+const gameSound = document.querySelector("#sound_info_screen");
+const gameOverSound = document.querySelector("#sound_game_over");
+const taxaSound = document.querySelector("#sound_taxa_game_over");
+const levelCompleteSound = document.querySelector("#sound_level_complete");
+
+// Beer
+const beerSound1 = document.querySelector("#sound_beer1");
+const beerSound2 = document.querySelector("#sound_beer2");
+const beerSound3 = document.querySelector("#sound_beer3");
+const beerSound4 = document.querySelector("#sound_beer4");
+
+// Vand
+const vandSound1 = document.querySelector("#sound_vand1");
+const vandSound2 = document.querySelector("#sound_vand2");
+const vandSound3 = document.querySelector("#sound_vand3");
+
+/*--------------------------------------------------- Mute Knap ---------------------------------------------------*/
+const muteKnap = document.querySelector("#mute_knap");
+muteKnap.addEventListener("click", mute);
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+let point, promilleTxt;
+let muted = true;
 
 window.addEventListener("load", loaded);
 
@@ -64,6 +98,7 @@ function startGame() {
 	beerAnimationer();
 	sidevognAnimationer();
 	telefonAnimationer();
+	mute();
 }
 /*--------------------------------------------------- Vand Funktioner ---------------------------------------------------*/
 function vandAnimationer() {
@@ -87,8 +122,9 @@ function vandAnimationer() {
 function clickHandlerVand() {
 	this.addEventListener("mousedown", clickHandlerVand);
 
+	//Animationer
 	this.classList.add("pause");
-	this.firstElementChild.classList.add("blow_out");
+	this.firstElementChild.classList.add("fade_out");
 	this.addEventListener("animationend", resetVand);
 
 	// +1 Promille, udskriv point
@@ -99,8 +135,18 @@ function clickHandlerVand() {
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
 	// Skift barometerbillede
+	let randTal = Math.floor(Math.random() * 3) + 1;
 	if (point <= 0) {
 		energyCount.innerHTML = 0 + "&permil;";
+		energyBoard.classList.add("barometer1");
+	}
+	// Afspil lyde
+	if (randTal == 1) {
+		vandSound1.play();
+	} else if (randTal == 2) {
+		vandSound2.play();
+	} else {
+		vandSound3.play();
 	}
 
 	faceChoice();
@@ -179,7 +225,7 @@ function beerAnimationer() {
 function clickHandlerBeer() {
 	this.removeEventListener("mousedown", clickHandlerBeer);
 	this.classList.add("pause");
-	this.firstElementChild.classList.add("fade_out");
+	this.firstElementChild.classList.add("blow_out");
 	this.addEventListener("animationend", resetBeer);
 
 	// +0.3 promille, ++ point, udskriv point
@@ -197,6 +243,9 @@ function clickHandlerBeer() {
 	} else {
 	}
 	faceChoice();
+
+	// Afspil lyde
+	afspilBeerLyd();
 }
 function resetBeer() {
 	this.removeEventListener("animationiteration", resetBeer);
@@ -279,7 +328,7 @@ function sidevognAnimationer() {
 function clickHandlerSidevogn() {
 	this.removeEventListener("mousedown", clickHandlerSidevogn);
 	this.classList.add("pause");
-	this.firstElementChild.classList.add("fade_out");
+	this.firstElementChild.classList.add("blow_out");
 	this.addEventListener("animationend", resetSidevogn);
 
 	// +0.6 Promille, ++ point, udskriv point
@@ -297,6 +346,9 @@ function clickHandlerSidevogn() {
 	} else {
 	}
 	faceChoice();
+
+	// Afspil lyde
+	afspilBeerLyd();
 }
 function resetSidevogn() {
 	this.removeEventListener("animationend", resetSidevogn);
@@ -416,14 +468,14 @@ function startScreenFn() {
 	captura.removeEventListener("animationend", addHideAnimation);
 	halo.classList = "";
 	captura.classList = "";
-	startKnap.addEventListener("click", skjulStart);
+	startKnap.addEventListener("click", visInfo);
 	startKnap.classList.add("pulse");
 	halo.classList.add("text_reveal", "delay2");
 	captura.classList.add("text_reveal");
 }
-function skjulStart() {
+function visInfo() {
 	captura.addEventListener("animationend", addHideAnimation);
-	startKnap.removeEventListener("click", skjulStart);
+	startKnap.removeEventListener("click", visInfo);
 	startKnap.classList.remove("pulse");
 	halo.classList.remove("text_reveal", "delay2");
 	captura.classList.remove("text_reveal");
@@ -431,6 +483,9 @@ function skjulStart() {
 	halo.classList.add("text_reveal_reverse", "delay2");
 	captura.classList.add("text_reveal_reverse");
 	infoScreen.classList = "";
+
+	// Afspil Spil Musik
+	gameSound.play();
 }
 
 /*--------------------------------------------------- Info Skærm Funktioner ---------------------------------------------------*/
@@ -440,15 +495,37 @@ function infoScreenFn() {
 function skjulInfo() {
 	console.log("tiden starter");
 	infoScreen.classList.add("hide_kf");
+
 	startTimer();
 }
 
 /*--------------------------------------------------- Level Complete Skærm Funktioner ---------------------------------------------------*/
 function levelCompleteScreenFn() {
+	// Animationer
+	levelCompleteHeader.classList.add("level_complete_reveal");
+	levelCompleteTxt.classList.add("level_complete_reveal", "delay1");
+	levelCompleteBeerL.classList.add("level_complete_reveal", "delay2");
+	levelCompleteBeerR.classList.add("level_complete_reveal", "delay2");
+	levelCompleteFirework1.classList.add("level_complete_reveal", "delay3");
+	levelCompleteFirework2.classList.add("level_complete_reveal", "delay3");
+	levelCompleteFirework3.classList.add("level_complete_reveal", "delay3");
+	levelCompleteFlag.classList.add("level_complete_reveal", "delay1");
+	levelCompleteFigur1.classList.add("level_complete_reveal", "delay4");
+	levelCompleteFigur2.classList.add("level_complete_reveal", "delay4");
+
+	fjernTrykLyde();
+	levelCompleteScreen.classList = "";
 	levelCompleteScreen.classList.add("unhide");
 	viser.classList = "";
 	completeReplay.addEventListener("click", replay);
 	completeHome.addEventListener("click", home);
+
+	// Aspil Lyd
+	gameSound.pause();
+	gameSound.currentTime = 0;
+
+	levelCompleteSound.volume = 0.2;
+	levelCompleteSound.play();
 }
 /*--------------------------------------------------- Game Over Skærm Funktioner ---------------------------------------------------*/
 function gameOverScreenFn() {
@@ -457,13 +534,37 @@ function gameOverScreenFn() {
 	viser.classList = "";
 	gameOverReplay.addEventListener("click", replay);
 	gameOverHome.addEventListener("click", home);
+
+	gameSound.pause();
+	gameOverSound.play();
 }
-/*--------------------------------------------------- Gam Over Taxa Skærm Funktioner ---------------------------------------------------*/
+/*--------------------------------------------------- Game Over Taxa Skærm Funktioner ---------------------------------------------------*/
 function taxaScreenFn() {
 	taxaScreen.classList.add("unhide");
 	viser.classList = "";
+
+	taxaBil.classList.add("taxa_drive");
+
 	taxaReplay.addEventListener("click", replay);
 	taxaHome.addEventListener("click", home);
+
+	gameSound.pause();
+	taxaSound.play();
+}
+
+/*--------------------------------------------------- Mute Knap Fn---------------------------------------------------*/
+function mute() {
+	if (muted == false) {
+		muteAlt();
+		muteKnap.classList = "";
+		muteKnap.classList.add("muted");
+		muted = true;
+	} else {
+		unMuteAlt();
+		muteKnap.classList = "";
+		muteKnap.classList.add("unmuted");
+		muted = false;
+	}
 }
 
 /*--------------------------------------------------- Model Funktioner ---------------------------------------------------*/
@@ -531,7 +632,12 @@ function replay() {
 	taxaScreen.classList.add("hide");
 	gameOverScreen.classList.add("hide");
 	levelCompleteScreen.classList.add("hide");
+
+	// Lyde resettes
+	resetLyde();
+
 	startGame();
+	mute();
 }
 function home() {
 	infoScreen.classList = "";
@@ -550,4 +656,116 @@ function home() {
 	gameOverScreen.classList.add("hide");
 	levelCompleteScreen.classList.add("hide");
 	loaded();
+
+	resetLyde();
+	gameSound.pause();
+	mute();
+}
+
+function afspilBeerLyd() {
+	let randTal = Math.floor(Math.random() * 4) + 1;
+
+	if (randTal == 1) {
+		beerSound1.play();
+	} else if (randTal == 2) {
+		beerSound2.play();
+	} else if (randTal == 3) {
+		beerSound3.play();
+	} else {
+		beerSound4.play();
+	}
+}
+function fjernTrykLyde() {
+	console.log("Pause");
+	beerSound1.pause();
+	beerSound1.volume = 0;
+	beerSound1.currentTime = 0;
+
+	beerSound2.pause();
+	beerSound2.volume = 0;
+	beerSound2.currentTime = 0;
+
+	beerSound3.pause();
+	beerSound2.volume = 0;
+	beerSound3.currentTime = 0;
+
+	beerSound4.pause();
+	beerSound4.volume = 0;
+	beerSound4.currentTime = 0;
+
+	vandSound1.pause();
+	vandSound1.volume = 0;
+	vandSound1.currentTime = 0;
+
+	vandSound2.pause();
+	vandSound2.volume = 0;
+	vandSound2.currentTime = 0;
+
+	vandSound3.pause();
+	vandSound3.volume = 0;
+	vandSound3.currentTime = 0;
+}
+
+function resetLyde() {
+	console.log("Pause");
+	beerSound1.pause();
+	beerSound1.currentTime = 0;
+
+	beerSound2.pause();
+	beerSound2.currentTime = 0;
+
+	beerSound3.pause();
+	beerSound3.currentTime = 0;
+
+	beerSound4.pause();
+	beerSound4.currentTime = 0;
+
+	vandSound1.pause();
+	vandSound1.currentTime = 0;
+
+	vandSound2.pause();
+	vandSound2.currentTime = 0;
+
+	vandSound3.pause();
+	vandSound3.currentTime = 0;
+
+	gameSound.play();
+	gameSound.currentTime = 0;
+
+	gameOverSound.pause();
+	gameOverSound.currentTime = 0;
+
+	taxaSound.pause();
+	taxaSound.currentTime = 0;
+
+	levelCompleteSound.pause();
+	levelCompleteSound.currentTime = 0;
+}
+function muteAlt() {
+	beerSound1.volume = 0;
+	beerSound2.volume = 0;
+	beerSound3.volume = 0;
+	beerSound4.volume = 0;
+	vandSound1.volume = 0;
+	vandSound2.volume = 0;
+	vandSound3.volume = 0;
+
+	gameSound.volume = 0;
+	gameOverSound.volume = 0;
+	taxaSound.volume = 0;
+	levelCompleteSound.volume = 0;
+}
+function unMuteAlt() {
+	beerSound1.volume = 1;
+	beerSound2.volume = 1;
+	beerSound2.volume = 1;
+	beerSound4.volume = 1;
+	vandSound1.volume = 1;
+	vandSound2.volume = 1;
+	vandSound3.volume = 1;
+
+	gameSound.volume = 0.25;
+	gameOverSound.volume = 1;
+	taxaSound.volume = 1;
+	levelCompleteSound.volume = 1;
 }
