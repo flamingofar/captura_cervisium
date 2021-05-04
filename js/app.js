@@ -75,18 +75,7 @@ muteKnap.addEventListener("click", mute);
 
 /*--------------------------------------------------- Positioner ---------------------------------------------------*/
 // Array med alle positioner
-let posArray = [
-	"pos1",
-	"pos2",
-	"pos3",
-	"pos4",
-	"pos5",
-	"pos6",
-	"pos7",
-	"pos8",
-	"pos9",
-	"pos10",
-];
+let posArray = [];
 
 /*-----------------------------------------------------------------------------------------------------------------*/
 
@@ -103,6 +92,18 @@ function loaded() {
 	startGame();
 }
 function startGame() {
+	posArray = [
+		"pos1",
+		"pos2",
+		"pos3",
+		"pos4",
+		"pos5",
+		"pos6",
+		"pos7",
+		"pos8",
+		"pos9",
+		"pos10",
+	];
 	point = 0;
 	promilleTxt = 0;
 	energyBoard.classList.add("barometer1");
@@ -195,12 +196,11 @@ function resetVand() {
 
 	this.classList = "";
 	this.firstElementChild.classList = "";
-
 	//Blander posArray en funtion i bunden igen
 	shuffleArray(posArray);
 	this.offsetHeight;
 	//sætter en position på og rotate, shift() fjerner den indsatte position fra arrayet
-	this.classList.add(posArray.shift(), "rotate");
+	this.classList.add(posArray.shift());
 
 	this.classList.add(randomSpd);
 	this.offsetHeight;
@@ -604,7 +604,6 @@ function taxaScreenFn() {
 	taxaHome.addEventListener("click", home);
 
 	gameSound.pause();
-	taxaSound.volume = 0.15;
 	taxaSound.play();
 }
 
@@ -646,6 +645,7 @@ function startTimer() {
 function stopSpillet() {
 	viser.classList.remove("timer");
 	viser.removeEventListener("animationend", stopSpillet);
+
 	stopBeer();
 	stopSidevogn();
 	stopTelefon();
@@ -720,12 +720,15 @@ function home() {
 
 function afspilBeerLyd() {
 	let randTal = Math.floor(Math.random() * 4) + 1;
-
+	console.log(randTal);
 	if (randTal == 1) {
+		beerSound1.currentTime = 0;
 		beerSound1.play();
 	} else if (randTal == 2) {
+		beerSound2.currentTime = 0;
 		beerSound2.play();
 	} else if (randTal == 3) {
+		beerSound3.currentTime = 0;
 		beerSound3.play();
 	} else {
 		beerSound4.play();
@@ -822,7 +825,7 @@ function unMuteAlt() {
 
 	gameSound.volume = 0.25;
 	gameOverSound.volume = soundLvl;
-	taxaSound.volume = soundLvl;
+	taxaSound.volume = 0.15;
 	levelCompleteSound.volume = soundLvl;
 }
 

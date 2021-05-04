@@ -96,12 +96,12 @@
 }
 #info_box {
 	position: absolute;
-	width: 90vw;
-	height: 48vw;
+	width: 68vw;
+	height: 35.2vw;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background: url("../assets/ui_elementer/info_screen.svg");
+	background: url("../assets/screens/info_screen.png");
 	background-size: cover;
 	z-index: 201;
 	filter: drop-shadow(0 1.5vw 1vw rgba(0, 0, 0, 0.548));
@@ -212,11 +212,23 @@
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: url("../assets/screens/game_over_bg.svg");
+	background: url("../assets/screens/game_over_bg.png");
 	background-size: cover;
 	z-index: 201;
 	display: none;
 }
+
+#game_over_modal {
+	position: absolute;
+	width: 50vw;
+	height: 25.8vw;
+	top: 19vw;
+	left: 25vw;
+	background: url("../assets/screens/game_over_modal.png");
+	background-size: cover;
+	z-index: 201;
+}
+
 #game_over_alm {
 	position: absolute;
 	width: 70vw;
