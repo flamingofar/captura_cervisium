@@ -2,10 +2,8 @@
 /*--------------------------------------------------- Fadøl ---------------------------------------------------*/
 const beerContainer1 = document.querySelector("#beer_container1");
 const beerContainer2 = document.querySelector("#beer_container2");
-const beerContainer3 = document.querySelector("#beer_container3");
 /*--------------------------------------------------- Sidevogn ---------------------------------------------------*/
 const sidevognContainer1 = document.querySelector("#sidevogn_container1");
-const sidevognContainer2 = document.querySelector("#sidevogn_container2");
 /*--------------------------------------------------- Vand ---------------------------------------------------*/
 const vandContainer1 = document.querySelector("#vand_container1");
 const vandContainer2 = document.querySelector("#vand_container2");
@@ -75,6 +73,21 @@ const vandSound3 = document.querySelector("#sound_vand3");
 const muteKnap = document.querySelector("#mute_knap");
 muteKnap.addEventListener("click", mute);
 
+/*--------------------------------------------------- Positioner ---------------------------------------------------*/
+// Array med alle positioner
+let posArray = [
+	"pos1",
+	"pos2",
+	"pos3",
+	"pos4",
+	"pos5",
+	"pos6",
+	"pos7",
+	"pos8",
+	"pos9",
+	"pos10",
+];
+
 /*-----------------------------------------------------------------------------------------------------------------*/
 
 const soundLvl = 0.5;
@@ -95,6 +108,8 @@ function startGame() {
 	energyBoard.classList.add("barometer1");
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 	face.classList.add("face1");
+
+	shuffleArray(posArray);
 	vandAnimationer();
 	beerAnimationer();
 	sidevognAnimationer();
@@ -103,13 +118,27 @@ function startGame() {
 }
 /*--------------------------------------------------- Vand Funktioner ---------------------------------------------------*/
 function vandAnimationer() {
-	let randomPos = randomTal();
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
-	vandContainer1.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	vandContainer2.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	vandContainer3.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	vandContainer1.classList.add(
+		"rotate_arm",
+		posArray.shift(),
+		randomDel,
+		randomSpd
+	);
+	vandContainer2.classList.add(
+		"rotate_arm",
+		posArray.shift(),
+		randomDel,
+		randomSpd
+	);
+	vandContainer3.classList.add(
+		"rotate_arm",
+		posArray.shift(),
+		randomDel,
+		randomSpd
+	);
 	// Vand Animationer
 	vandContainer1.addEventListener("mousedown", clickHandlerVand);
 	vandContainer1.addEventListener("animationiteration", resetVand);
@@ -154,15 +183,28 @@ function clickHandlerVand() {
 }
 function resetVand() {
 	this.addEventListener("animationiteration", resetVand);
-	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
+
+	//Laver classList om til en string (bogstaver)
+	let test = String(this.classList);
+
+	//Gemmer den class der har pos og et tal efter f.eks. pos8 og laver det om til en string
+	let matches = String(test.match(/pos\d+/));
+	//Sætter den positioner der var på elemetet tilbage i arrayet
+	posArray.push(matches);
 
 	this.classList = "";
 	this.firstElementChild.classList = "";
 
+	//Blander posArray en funtion i bunden igen
+	shuffleArray(posArray);
+	this.offsetHeight;
+	//sætter en position på og rotate, shift() fjerner den indsatte position fra arrayet
+	this.classList.add(posArray.shift(), "rotate");
+
 	this.classList.add(randomSpd);
 	this.offsetHeight;
-	this.classList.add(randomPos, "rotate_arm");
+	this.classList.add("rotate_arm");
 	this.addEventListener("animationiteration", resetVand);
 	this.addEventListener("mousedown", clickHandlerVand);
 }
@@ -206,22 +248,28 @@ function stopVand() {
 
 /*--------------------------------------------------- Fadøl Funktioner ---------------------------------------------------*/
 function beerAnimationer() {
-	let randomPos = randomTal();
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
-	// Random Position, delay og rotation animation
-	beerContainer1.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	beerContainer2.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
-	beerContainer3.classList.add("rotate_arm", randomPos, randomDel, randomSpd);
+	// Random Position via array, delay og rotation animation
+	beerContainer1.classList.add(
+		"rotate_arm",
+		posArray.shift(),
+		randomDel,
+		randomSpd
+	);
+	beerContainer2.classList.add(
+		"rotate_arm",
+		posArray.shift(),
+		randomDel,
+		randomSpd
+	);
+
 	// Fadøl Animationer
 	beerContainer1.addEventListener("mousedown", clickHandlerBeer);
 	beerContainer1.addEventListener("animationiteration", resetBeer);
 
 	beerContainer2.addEventListener("mousedown", clickHandlerBeer);
 	beerContainer2.addEventListener("animationiteration", resetBeer);
-
-	beerContainer3.addEventListener("mousedown", clickHandlerBeer);
-	beerContainer3.addEventListener("animationiteration", resetBeer);
 }
 function clickHandlerBeer() {
 	this.removeEventListener("mousedown", clickHandlerBeer);
@@ -250,15 +298,27 @@ function clickHandlerBeer() {
 }
 function resetBeer() {
 	this.removeEventListener("animationiteration", resetBeer);
-	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
+	//Laver classList om til en string (bogstaver)
+	let test = String(this.classList);
+
+	//Gemmer den class der har pos og et tal efter f.eks. pos8 og laver det om til en string
+	let matches = String(test.match(/pos\d+/));
+	//Sætter den positioner der var på elemetet tilbage i arrayet
+	posArray.push(matches);
 
 	this.classList = "";
 	this.firstElementChild.classList = "";
 
+	//Blander posArray en funtion i bunden igen
+	shuffleArray(posArray);
+	this.offsetHeight;
+	//sætter en position på og rotate, shift() fjerner den indsatte position fra arrayet
+	this.classList.add(posArray.shift(), "rotate");
+
 	this.classList.add(randomSpd);
 	this.offsetHeight;
-	this.classList.add(randomPos, "rotate_arm");
+	this.classList.add("rotate_arm");
 
 	this.addEventListener("mousedown", clickHandlerBeer);
 	this.addEventListener("animationiteration", resetBeer);
@@ -287,44 +347,22 @@ function stopBeer() {
 
 	beerContainer2.removeEventListener("animationiteration", resetVand);
 	beerContainer2.removeEventListener("mousedown", clickHandlerVand);
-
-	beerContainer3.classList = "";
-	beerContainer3.firstElementChild.classList = "";
-
-	beerContainer3.removeEventListener("mousedown", clickHandlerVand);
-	beerContainer3.firstElementChild.removeEventListener(
-		"animationend",
-		resetVand
-	);
-
-	beerContainer3.removeEventListener("animationiteration", resetVand);
-	beerContainer3.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Sidevogn Funktioner ---------------------------------------------------*/
 function sidevognAnimationer() {
-	let randomPos = randomTal();
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
 	sidevognContainer1.classList.add(
 		"rotate_arm",
-		randomPos,
-		randomDel,
-		randomSpd
-	);
-	sidevognContainer2.classList.add(
-		"rotate_arm",
-		randomPos,
+		posArray.shift(),
 		randomDel,
 		randomSpd
 	);
 	// Fadøl Animationer
 	sidevognContainer1.addEventListener("mousedown", clickHandlerSidevogn);
 	sidevognContainer1.addEventListener("animationiteration", resetSidevogn);
-
-	sidevognContainer2.addEventListener("mousedown", clickHandlerSidevogn);
-	sidevognContainer2.addEventListener("animationiteration", resetSidevogn);
 }
 function clickHandlerSidevogn() {
 	this.removeEventListener("mousedown", clickHandlerSidevogn);
@@ -354,14 +392,30 @@ function clickHandlerSidevogn() {
 function resetSidevogn() {
 	this.removeEventListener("animationend", resetSidevogn);
 	this.removeEventListener("animationiteration", resetSidevogn);
-	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
+
+	//Laver classList om til en string (bogstaver)
+	let test = String(this.classList);
+
+	//Gemmer den class der har pos og et tal efter f.eks. pos8 og laver det om til en string
+	let matches = String(test.match(/pos\d+/));
+	//Sætter den positioner der var på elemetet tilbage i arrayet
+	posArray.push(matches);
 
 	this.classList = "";
 	this.firstElementChild.classList = "";
+
+	//Blander posArray en funtion i bunden igen
+	shuffleArray(posArray);
+	this.offsetHeight;
+	//sætter en position på og rotate, shift() fjerner den indsatte position fra arrayet
+	this.classList.add(posArray.shift(), "rotate");
+
 	this.classList.add(randomSpd);
 	this.offsetHeight;
-	this.classList.add(randomPos, "rotate_arm");
+	this.classList.add(randomSpd);
+	this.offsetHeight;
+	this.classList.add("rotate_arm");
 
 	this.addEventListener("mousedown", clickHandlerSidevogn);
 	this.addEventListener("animationiteration", resetSidevogn);
@@ -378,35 +432,22 @@ function stopSidevogn() {
 
 	sidevognContainer1.removeEventListener("animationiteration", resetVand);
 	sidevognContainer1.removeEventListener("mousedown", clickHandlerVand);
-
-	sidevognContainer2.classList = "";
-	sidevognContainer2.firstElementChild.classList = "";
-
-	sidevognContainer2.removeEventListener("mousedown", clickHandlerVand);
-	sidevognContainer2.firstElementChild.removeEventListener(
-		"animationend",
-		resetVand
-	);
-
-	sidevognContainer2.removeEventListener("animationiteration", resetVand);
-	sidevognContainer2.removeEventListener("mousedown", clickHandlerVand);
 }
 
 /*--------------------------------------------------- Telefon Funktioner ---------------------------------------------------*/
 function telefonAnimationer() {
-	let randomPos = randomTal();
 	let randomDel = randomDelay();
 	let randomSpd = randomSpeed();
 	// Random Position, delay og rotation animation
 	telefonContainer1.classList.add(
 		"rotate_arm",
-		randomPos,
+		posArray.shift(),
 		randomDel,
 		randomSpd
 	);
 	telefonContainer2.classList.add(
 		"rotate_arm",
-		randomPos,
+		posArray.shift(),
 		randomDel,
 		randomSpd
 	);
@@ -425,15 +466,28 @@ function clickHandlerTelefon() {
 }
 function resetTelefon() {
 	this.removeEventListener("animationiteration", resetTelefon);
-	let randomPos = randomTal();
 	let randomSpd = randomSpeed();
+
+	//Laver classList om til en string (bogstaver)
+	let test = String(this.classList);
+
+	//Gemmer den class der har pos og et tal efter f.eks. pos8 og laver det om til en string
+	let matches = String(test.match(/pos\d+/));
+	//Sætter den positioner der var på elemetet tilbage i arrayet
+	posArray.push(matches);
 
 	this.classList = "";
 	this.firstElementChild.classList = "";
 
+	//Blander posArray en funtion i bunden igen
+	shuffleArray(posArray);
+	this.offsetHeight;
+	//sætter en position på og rotate, shift() fjerner den indsatte position fra arrayet
+	this.classList.add(posArray.shift(), "rotate");
+
 	this.classList.add(randomSpd);
 	this.offsetHeight;
-	this.classList.add(randomPos, "rotate_arm");
+	this.classList.add("rotate_arm");
 
 	this.addEventListener("mousedown", clickHandlerTelefon);
 	this.addEventListener("animationiteration", resetTelefon);
@@ -769,4 +823,12 @@ function unMuteAlt() {
 	gameOverSound.volume = soundLvl;
 	taxaSound.volume = soundLvl;
 	levelCompleteSound.volume = soundLvl;
+}
+
+function shuffleArray(a) {
+	for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+	}
+	return a;
 }

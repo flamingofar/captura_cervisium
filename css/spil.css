@@ -648,18 +648,6 @@
 	height: 6vw;
 	background-size: cover;
 }
-#beer_container3 {
-	position: absolute;
-	transform-origin: 0 0;
-	opacity: 0;
-}
-#beer_sprite3 {
-	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_beer.svg");
-	width: 7.7vw;
-	height: 6vw;
-	background-size: cover;
-}
 
 #sidevogn_container1 {
 	position: absolute;
@@ -667,18 +655,6 @@
 	opacity: 0;
 }
 #sidevogn_sprite1 {
-	/* ratio 9:7 */
-	background-image: url("../assets/ui_elementer/arm_beer_sidevogn.svg");
-	width: 7.7vw;
-	height: 6vw;
-	background-size: cover;
-}
-#sidevogn_container2 {
-	position: absolute;
-	transform-origin: 0 0;
-	opacity: 0;
-}
-#sidevogn_sprite2 {
 	/* ratio 9:7 */
 	background-image: url("../assets/ui_elementer/arm_beer_sidevogn.svg");
 	width: 7.7vw;
@@ -765,16 +741,16 @@
 }
 
 .speed1 {
-	animation-duration: 1s;
+	animation-duration: 0.5s;
 }
 .speed2 {
-	animation-duration: 1.5s;
+	animation-duration: 1s;
 }
 .speed3 {
-	animation-duration: 2s;
+	animation-duration: 1.5s;
 }
 .speed4 {
-	animation-duration: 2.5s;
+	animation-duration: 2s;
 }
 
 .pos1 {
