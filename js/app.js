@@ -604,6 +604,7 @@ function taxaScreenFn() {
 	taxaHome.addEventListener("click", home);
 
 	gameSound.pause();
+	taxaSound.volume = 0.15;
 	taxaSound.play();
 }
 
