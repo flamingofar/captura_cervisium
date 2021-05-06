@@ -86,7 +86,6 @@ let muted = true;
 window.addEventListener("load", loaded);
 
 function loaded() {
-	console.log("loaded");
 	startScreenFn();
 	infoScreenFn();
 	startGame();
@@ -151,7 +150,7 @@ function vandAnimationer() {
 	vandContainer3.addEventListener("animationiteration", resetVand);
 }
 function clickHandlerVand() {
-	this.addEventListener("mousedown", clickHandlerVand);
+	this.removeEventListener("mousedown", clickHandlerVand);
 
 	//Animationer
 	this.classList.add("pause");
@@ -166,12 +165,13 @@ function clickHandlerVand() {
 	energyCount.innerHTML = Math.round(promilleTxt * 100) / 100 + "&permil;";
 
 	// Skift barometerbillede
-	let randTal = Math.floor(Math.random() * 3) + 1;
+
 	if (point <= 0) {
 		energyCount.innerHTML = 0 + "&permil;";
 		energyBoard.classList.add("barometer1");
 	}
 	// Afspil lyde
+	let randTal = Math.floor(Math.random() * 3) + 1;
 	if (randTal == 1) {
 		vandSound1.play();
 	} else if (randTal == 2) {
@@ -183,7 +183,7 @@ function clickHandlerVand() {
 	faceChoice();
 }
 function resetVand() {
-	this.addEventListener("animationiteration", resetVand);
+	this.removeEventListener("animationiteration", resetVand);
 	let randomSpd = randomSpeed();
 
 	//Laver classList om til en string (bogstaver)
@@ -548,7 +548,6 @@ function infoScreenFn() {
 	infoPlayKnap.addEventListener("click", skjulInfo);
 }
 function skjulInfo() {
-	console.log("tiden starter");
 	infoScreen.classList.add("hide_kf");
 
 	startTimer();
@@ -584,7 +583,7 @@ function levelCompleteScreenFn() {
 }
 /*--------------------------------------------------- Game Over Skærm Funktioner ---------------------------------------------------*/
 function gameOverScreenFn() {
-	console.log("Game Over");
+	gameOverScreen.classList = "";
 	gameOverScreen.classList.add("unhide");
 	viser.classList = "";
 	gameOverReplay.addEventListener("click", replay);
@@ -595,6 +594,7 @@ function gameOverScreenFn() {
 }
 /*--------------------------------------------------- Game Over Taxa Skærm Funktioner ---------------------------------------------------*/
 function taxaScreenFn() {
+	taxaScreen.classList = "";
 	taxaScreen.classList.add("unhide");
 	viser.classList = "";
 
@@ -720,7 +720,6 @@ function home() {
 
 function afspilBeerLyd() {
 	let randTal = Math.floor(Math.random() * 4) + 1;
-	console.log(randTal);
 	if (randTal == 1) {
 		beerSound1.currentTime = 0;
 		beerSound1.play();
@@ -735,7 +734,6 @@ function afspilBeerLyd() {
 	}
 }
 function fjernTrykLyde() {
-	console.log("Pause");
 	beerSound1.pause();
 	beerSound1.volume = 0;
 	beerSound1.currentTime = 0;
@@ -766,7 +764,6 @@ function fjernTrykLyde() {
 }
 
 function resetLyde() {
-	console.log("Pause");
 	beerSound1.pause();
 	beerSound1.currentTime = 0;
 

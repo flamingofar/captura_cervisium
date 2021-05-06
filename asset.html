@@ -9,7 +9,6 @@
 
 		<link rel="stylesheet" href="https://use.typekit.net/byb5rko.css" />
 
-		<link rel="stylesheet" href="css/menu.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<title>Assets</title>
 	</head>
@@ -171,16 +170,22 @@
 			<h2>Assets</h2>
 			<span>Assets</span>
 		</div>
-		<nav>
-			<div class="main">
-				<a href="index.html" class="circle"></a>
-				<a href="asset.html" class="circle"></a>
-				<a href="dokumentation.html" class="circle"></a>
-				<a href="spil.html" class="circle"></a>
+		<div id="menu_btn" class="btn"></div>
+		<nav id="menu">
+			<div id="menu_close">
+				<div class="stroke1"></div>
+				<div class="stroke2"></div>
 			</div>
+			<ul>
+				<li><a href="index.html">Hjem</a></li>
+				<li><a href="spil.html">Spillet</a></li>
+
+				<li><a href="dokumentation.html">Dokumentation</a></li>
+				<li><a href="asset.html">Assets</a></li>
+			</ul>
 		</nav>
 		<main>
-			<section class="ui-elements">
+			<section class="ui-elements elements">
 				<h3>UI</h3>
 				<div class="elements">
 					<div class="grid_element_container">
@@ -213,21 +218,21 @@
 					</div>
 					<div class="grid_element_container">
 						<img
-							src="assets/ui_elementer/arm_fadøl.svg"
+							src="assets/ui_elementer/arm_beer.svg"
 							alt=""
 							class="ui assets"
 						/>
 					</div>
 					<div class="grid_element_container">
 						<img
-							src="assets/ui_elementer/arm_fadøl_sidevogn.svg"
+							src="assets/ui_elementer/arm_beer_sidevogn.svg"
 							alt=""
 							class="ui assets"
 						/>
 					</div>
 				</div>
 			</section>
-			<section class="figure-elements">
+			<section class="figure-elements elements">
 				<h3>Figure</h3>
 				<div class="elements">
 					<div class="grid_element_container">
@@ -276,7 +281,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="button-elements">
+			<section class="button-elements elements">
 				<h3>Knapper</h3>
 				<div class="elements">
 					<div class="grid_element_container">
@@ -312,7 +317,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="screen-elements">
+			<section class="screen-elements elements">
 				<h3>Skærme og tilbehør</h3>
 				<div class="elements">
 					<div class="grid_element_container">
@@ -386,23 +391,10 @@
 					</div>
 				</div>
 			</section>
+			<footer>
+				<p>Af: Malte Tambo Skjoldager</p>
+			</footer>
 		</main>
-
-		<script>
-			/*
-			const main_circle = document.querySelector(".main");
-			const circle_one = document.querySelector(".circle:first-child");
-			const circle_two = document.querySelector(".circle:nth-child(2)");
-			const circle_three = document.querySelector(".circle:nth-child(3)");
-			const circle_four = document.querySelector(".circle:last-child");
-
-			main_circle.addEventListener("click", () => {
-				console.log("clicked");
-				circle_one.classList.toggle("open_1");
-				circle_two.classList.toggle("open_2");
-				circle_three.classList.toggle("open_3");
-				circle_four.classList.toggle("open_4");
-			});*/
-		</script>
+		<script src="js/index.js"></script>
 	</body>
 </html>

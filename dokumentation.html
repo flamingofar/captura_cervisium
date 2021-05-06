@@ -10,7 +10,6 @@
 		<link rel="stylesheet" href="https://use.typekit.net/byb5rko.css" />
 
 		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/menu.css" />
 		<title>Assets</title>
 	</head>
 	<body>
@@ -167,34 +166,211 @@
 			</svg>
 		</a>
 
-		<div class="heading">
+		<div id="dokumentation_heading" class="heading">
 			<h2>Dokumentation</h2>
-			<span>Dokumentation</span>
+			<span class="span">Dokumentation</span>
 		</div>
-		<nav>
-			<div class="main">
-				<a href="index.html" class="circle"></a>
-				<a href="asset.html" class="circle"></a>
-				<a href="dokumentation.html" class="circle"></a>
-				<a href="spil.html" class="circle"></a>
+		<div id="menu_btn" class="btn"></div>
+		<nav id="menu">
+			<div id="menu_close">
+				<div class="stroke1"></div>
+				<div class="stroke2"></div>
 			</div>
+			<ul>
+				<li><a href="index.html">Hjem</a></li>
+				<li><a href="spil.html">Spillet</a></li>
+
+				<li><a href="dokumentation.html">Dokumentation</a></li>
+				<li><a href="asset.html">Assets</a></li>
+			</ul>
 		</nav>
-		<main></main>
-
-		<script>
-			const main_circle = document.querySelector(".main");
-			const circle_one = document.querySelector(".circle:first-child");
-			const circle_two = document.querySelector(".circle:nth-child(2)");
-			const circle_three = document.querySelector(".circle:nth-child(3)");
-			const circle_four = document.querySelector(".circle:last-child");
-
-			main_circle.addEventListener("click", () => {
-				console.log("clicked");
-				circle_one.classList.toggle("open_1");
-				circle_two.classList.toggle("open_2");
-				circle_three.classList.toggle("open_3");
-				circle_four.classList.toggle("open_4");
-			});
-		</script>
+		<main id="section_dokumentation">
+			<section id="section1">
+				<h3>Spil Idé</h3>
+				<p>
+					Nu har vi gået et år uden rigtigt at have muligheden for fadøl på
+					værtshuse, uderover et meget begrænset omfang i sommer. I Captura
+					Cervisiam, hvilket er fadøl på latin, befinder man sig på Lygtens Kro
+					på Nørrebro i København. Målet er at få drukket sig en ordentlig kæp i
+					øret. Det opnår man ved at tage imod alle de fadøl du får tilbudt af
+					barens gæster. Imellem gæsterne er der også nogle fornuftige
+					mennesker, FØJ!, der prøver at forpurre din rus ved at tilbyde dig
+					vand i fadølsglas, nederdrægtigt! Du skal nå at få en promille på 3.0
+					inden Kroen lukker og du bliver smidt hjem. Derimod hvis du kommer til
+					at tage imod telefonen har du tabt. Der er blevet ringet efter en taxa
+					der tager dig hjem inden Kroen lukker.
+				</p>
+				<p class="styletile">
+					Se udviddet styletile her: <br />
+					<a href="assets/spil_malte_skjoldager.pdf" target="_blank"
+						>Udviddet Styletile</a
+					>
+				</p>
+			</section>
+			<section id="section2">
+				<h3>State Machine Diagram</h3>
+				<img
+					src="assets/dokumentation/captura_cervisiam_state.jpg"
+					alt="State Machine Diagram"
+				/>
+			</section>
+			<section id="section3">
+				<h3>Aktivitets Diagram</h3>
+				<img
+					src="assets/dokumentation/aktivitets_diagram.png"
+					alt="Aktivitets Diagram"
+				/>
+			</section>
+			<section id="section4">
+				<h3>Paper Prototype</h3>
+				<div id="section4_container">
+					<img
+						src="assets/dokumentation/Paper/Billede1.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede2.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede3.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede4.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede5.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede6.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede7.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede8.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede9.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede10.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede11.jpg"
+						alt="Paper Protoype Billede"
+					/>
+					<img
+						src="assets/dokumentation/Paper/Billede12.jpg"
+						alt="Paper Protoype Billede"
+					/>
+				</div>
+			</section>
+			<section id="section5">
+				<h3>Design Proces</h3>
+				<div id="section5_container">
+					<img
+						src="assets/dokumentation/Process/proces1.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces2.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces3.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces4.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces5.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces6.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces7.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces8.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces9.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces10.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces11.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces12.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces13.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces14.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces15.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces16.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces17.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces18.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces19.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces20.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces21.jpg"
+						alt="Proces Billede"
+					/>
+					<img
+						src="assets/dokumentation/Process/proces22.jpg"
+						alt="Proces Billede"
+					/>
+				</div>
+			</section>
+			<footer>
+				<p>Af: Malte Tambo Skjoldager</p>
+			</footer>
+		</main>
+		<script src="js/index.js"></script>
 	</body>
 </html>
